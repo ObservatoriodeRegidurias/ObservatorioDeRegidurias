@@ -7,15 +7,10 @@ CARGO_CHOISES=(('1',('Presidente Muncipal')),
                 ('3',('Síndico Procurador')),
                 ('4',('Suplente Síndico')),
                 ('5',('Regidor MR')),
-                ('6',('Regidor RP')),
-                ('7',('Suplente Regidor')),
-                ('8',('Presidenta Muncipal')),
-                ('9',('Suplente Presidenta')),
-                ('10',('Síndica Procurador')),
-                ('11',('Suplente Síndica')),
-                ('12',('Regidora MR')),
-                ('13',('Regidora RP')),
-                ('14',('Suplente Regidora')))
+                ('6',('Regidor RP')))
+
+GENERO_CHOISES=(('1',('Femenino')),
+                ('2',('Masculino')))
 
 PARTIDO_CHOISES=(('1',('Morena')),
                 ('2',('Partido Verde Ecologísta')),
@@ -53,10 +48,13 @@ class Regidores(models.Model):
     year = models.CharField(max_length=9, verbose_name='Año')
     ayuntamiento = models.CharField(max_length=12, verbose_name='Ayuntamiento')
     cargo = models.CharField(max_length=2, choices=CARGO_CHOISES, verbose_name='Cargo')
-    cargo_secundario = models.CharField(max_length=1, choices=CARGO_CHOISES, verbose_name='Cargo secundario')
+    genero = models.CharField(max_length=1,default=1, choices=GENERO_CHOISES, verbose_name='Genero')
     nombre = models.CharField(max_length=300, verbose_name='nombre')
     apellido_paterno = models.CharField(max_length=100, verbose_name='Apellido paterno')
     apellido_materno = models.CharField(max_length=100, verbose_name='Apellido materno')
+    nombre_suplente = models.CharField(max_length=300, default="Some String",  verbose_name='Nombre del suplente')
+    apellido_paterno_suplente = models.CharField(max_length=100, default="Some String", verbose_name='Apellido paterno del suplente')
+    apellido_materno_suplente = models.CharField(max_length=120, default="Some String", verbose_name='Apellido materno del suplente')
     partido = models.CharField(max_length=1, choices=PARTIDO_CHOISES, verbose_name='Partido')
     foto = models.ImageField(upload_to='img', blank=True, verbose_name='Foto')
     telefono = models.IntegerField(max_length=10, verbose_name='Telefono')
@@ -64,15 +62,21 @@ class Regidores(models.Model):
     facebook = models.URLField(blank=True, null=True, name="facebook", verbose_name="Facebook")
     twitter = models.URLField(blank=True, null=True, name="twitter", verbose_name="Twitter")
     instagram = models.URLField(blank=True, null=True, name="instagram", verbose_name="Instagram")
-    comision_1 = models.CharField(max_length=2, choices=COMISIONES_CHOISES, verbose_name='Comisión 1')
-    comision_2 = models.CharField(max_length=2, choices=COMISIONES_CHOISES, verbose_name='Comisión 2')
-    comision_3 = models.CharField(max_length=2, choices=COMISIONES_CHOISES, verbose_name='Comisión 3')
-    comision_4 = models.CharField(max_length=2, choices=COMISIONES_CHOISES, verbose_name='Comisión 4')
-    comision_5 = models.CharField(max_length=2, choices=COMISIONES_CHOISES, verbose_name='Comisión 5')
-    comision_6 = models.CharField(max_length=2, choices=COMISIONES_CHOISES, verbose_name='Comisión 6')
-    comision_7 = models.CharField(max_length=2, choices=COMISIONES_CHOISES, verbose_name='Comisión 7')
-    comision_8 = models.CharField(max_length=2, choices=COMISIONES_CHOISES, verbose_name='Comisión 8')
-    comision_9 = models.CharField(max_length=2, choices=COMISIONES_CHOISES, verbose_name='Comisión 9')
+    comision_1_presidencia = models.CharField(max_length=2, default=1, choices=COMISIONES_CHOISES, verbose_name='Comisión 1 presidencia')
+    comision_2_presidencia = models.CharField(max_length=2, default=1,choices=COMISIONES_CHOISES, verbose_name='Comisión 2 presidencia')
+    comision_1_secretaria = models.CharField(max_length=2,default=1, choices=COMISIONES_CHOISES, verbose_name='Comisión 1 secretaria')
+    comision_2_secretaria = models.CharField(max_length=2, default=1,choices=COMISIONES_CHOISES, verbose_name='Comisión 2 secretaria')
+    comision_3_secretaria = models.CharField(max_length=2, default=1,choices=COMISIONES_CHOISES, verbose_name='Comisión 3 secretaria')
+    comision_4_secretaria = models.CharField(max_length=2, default=1, choices=COMISIONES_CHOISES, verbose_name='Comisión 4 secretaria')
+    comision_1 = models.CharField(max_length=2, default=1, choices=COMISIONES_CHOISES, verbose_name='Comisión 1')
+    comision_2 = models.CharField(max_length=2, default=1,choices=COMISIONES_CHOISES, verbose_name='Comisión 2')
+    comision_3 = models.CharField(max_length=2, default=1,choices=COMISIONES_CHOISES, verbose_name='Comisión 3')
+    comision_4 = models.CharField(max_length=2,default=1, choices=COMISIONES_CHOISES, verbose_name='Comisión 4')
+    comision_5 = models.CharField(max_length=2, default=1, choices=COMISIONES_CHOISES, verbose_name='Comisión 5')
+    comision_6 = models.CharField(max_length=2,default=1, choices=COMISIONES_CHOISES, verbose_name='Comisión 6')
+    comision_7 = models.CharField(max_length=2,default=1, choices=COMISIONES_CHOISES, verbose_name='Comisión 7')
+    comision_8 = models.CharField(max_length=2, default=1, choices=COMISIONES_CHOISES, verbose_name='Comisión 8')
+    comision_9 = models.CharField(max_length=2, default=1, choices=COMISIONES_CHOISES, verbose_name='Comisión 9')
     inicio_de_funciones = models.DateTimeField(blank=True, null=True, verbose_name='Inicio de funciones')
     termina_funciones = models.DateTimeField(blank=True, null=True, verbose_name='Termina funciones')
     actas = models.ImageField(upload_to='pdf', blank=True, verbose_name='actas')
