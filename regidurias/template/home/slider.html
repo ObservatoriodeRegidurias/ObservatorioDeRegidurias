@@ -1,0 +1,23 @@
+<style> 
+    .slider_img{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: rgba(29, 69, 113, 0.5)!important;
+        color:#ffff;
+        position:absolute; 
+        top:0; 
+        bottom:0; 
+        right:0; 
+        left:0;
+    }
+    
+    </style>
+    
+    <div class="carousel-item item opacity_img {%if forloop.counter0 == 0%}active{%endif%}">
+        <div class="carousel-caption header-opacity slider_img">
+            <h3 class="header-tag font-weight-bold"><span style="background-color:#F9C00C; color:#fff;">&nbsp;{{ event.tag }}&nbsp;</span></h3>            
+            <h1 class="header-title font-weight-bold" style="color:#fff;">{{events.titulo}}</h1>
+        </div>
+        <img  src="{{events.imagen.url}}" width="100%" height="100%">
+    </div>

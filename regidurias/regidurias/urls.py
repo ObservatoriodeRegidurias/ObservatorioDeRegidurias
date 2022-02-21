@@ -15,14 +15,31 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+from apps.regidurias.views import RegiduriasView
+from apps.cabildo.views import CabildoView
+from apps.contacto.views import ContactoView
+from apps.normatividad.views import NormatividadView
+from apps.preguntas.views import PreguntasView
+from apps.presupuesto.views import PresupuestoView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('sesion_cabildo/',include(('apps.cabildo.urls','sesion_cabildo'))),
-    path('contacto/',include(('apps.cabildo.urls','contacto'))),
-    path('home/',include(('apps.cabildo.urls','home'))),
-    path('normatividad/',include(('apps.cabildo.urls','normatividad'))),
-    path('preguntas/',include(('apps.cabildo.urls','reguntas'))),
-    path('presupuesto/',include(('apps.cabildo.urls','presupuesto'))),
-    path('regidurias/',include(('apps.cabildo.urls','regidurias')))
+    path('contacto/',include(('apps.contacto.urls','contacto'))),
+    path('',include(('apps.home.urls','home'))),
+    path('normatividad/',include(('apps.normatividad.urls','normatividad'))),
+    path('preguntas/',include(('apps.preguntas.urls','preguntas'))),
+    path('presupuesto/',include(('apps.presupuesto.urls','presupuesto'))),
+    path('regidurias/',include(('apps.regidurias.urls','regidurias'))),
+    path('regidurias/',RegiduriasView.as_view(), name='regidurias'),
+    path('sesion_cabildo/',CabildoView.as_view(), name='sesion_cabildo'),
+    path('contacto/',ContactoView.as_view(), name='contacto'),
+    path('normatividad/',NormatividadView.as_view(), name='normatividad'),
+    path('preguntas/',PreguntasView.as_view(), name='preguntas'),
+    path('presupuesto/',PresupuestoView.as_view(), name='presupuesto')
 ]
+
+if settings.DEBUG:
+    urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -7,9 +7,7 @@ TIPO_DE_NORMA_CHOISES=(('1',('Ley general')),
                     ('4',('Reglamento municipal')))
 
 
-class SesionesCabildo(models.Model):
-    entidad = models.CharField(max_length=200, verbose_name='Entidad')
-    municipio = models.CharField(max_length=200, verbose_name='Municipio')
+class Normatividad(models.Model):
     tipo_de_let = models.CharField(max_length=1, choices=TIPO_DE_NORMA_CHOISES, verbose_name='Tipo de sesión')
     nombre = models.CharField(max_length=200, verbose_name='Nombre')
     fuentes = models.ImageField(upload_to='pdf', blank=True, verbose_name='fuentes')

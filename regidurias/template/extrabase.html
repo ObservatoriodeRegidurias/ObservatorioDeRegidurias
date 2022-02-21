@@ -1,0 +1,32 @@
+<!-- <!DOCTYPE html>
+
+<body>
+    <div class= "navbar-light navbar-link">
+        <ul class="navbar-nav ml-auto dropdown" >
+            <li class="nav-item" >
+
+                    <li class="nav-link dropdown-toggle selected-option" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    
+                    {{request.COOKIES.country|upper}}
+                    </li>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+
+                    <a class="dropdown-item country-option" data-value="all" href="{%url 'set_country' %}?branchoffice=all" id="Todos">
+                    </a>
+
+                    {% for country in all_countries %}
+                    <a class="dropdown-item country-option" data-value="country" href="{%url 'set_country' %}?branchoffice={{country.code_name}}" id="{{country.code_name}}"  >
+                    </a>
+                    {%endfor%}
+
+
+                </div>
+
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html> -->

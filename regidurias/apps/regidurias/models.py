@@ -41,10 +41,12 @@ COMISIONES_CHOISES=(('1',('Gobernación, Legislación y Mejora Regulatoria')),
                 ('18',('Planeación, Urbanismo, Desarrollo Metropolitano, Obras y Servicios Públicos')),
                 ('19',('Coordinación Política')))
 
+STATUS_CHOICES = (('1',('Borrador')),
+                ('2',('Publicado')),
+                ('3',('Finalizado')))
+
 
 class Regidores(models.Model):
-    entidad = models.CharField(max_length=200, verbose_name='Entidad')
-    municipio = models.CharField(max_length=200, verbose_name='Municipio')
     year = models.CharField(max_length=9, verbose_name='Año')
     ayuntamiento = models.CharField(max_length=12, verbose_name='Ayuntamiento')
     cargo = models.CharField(max_length=2, choices=CARGO_CHOISES, verbose_name='Cargo')
@@ -62,6 +64,7 @@ class Regidores(models.Model):
     facebook = models.URLField(blank=True, null=True, name="facebook", verbose_name="Facebook")
     twitter = models.URLField(blank=True, null=True, name="twitter", verbose_name="Twitter")
     instagram = models.URLField(blank=True, null=True, name="instagram", verbose_name="Instagram")
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES,default=1,)
     comision_1_presidencia = models.CharField(max_length=2, default=1, choices=COMISIONES_CHOISES, verbose_name='Comisión 1 presidencia')
     comision_2_presidencia = models.CharField(max_length=2, default=1,choices=COMISIONES_CHOISES, verbose_name='Comisión 2 presidencia')
     comision_1_secretaria = models.CharField(max_length=2,default=1, choices=COMISIONES_CHOISES, verbose_name='Comisión 1 secretaria')
