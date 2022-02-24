@@ -1,5 +1,5 @@
 from django.db import models
-
+from apps.entidades.models import Entidades,Municipio
 # Create your models here.
 TIPO_DE_NORMA_CHOISES=(('1',('Ley general')),
                     ('2',('Reglamento municipal')),
@@ -8,6 +8,8 @@ TIPO_DE_NORMA_CHOISES=(('1',('Ley general')),
 
 
 class Normatividad(models.Model):
+    entidades = models.ForeignKey(Entidades, on_delete=models.CASCADE)
+    municipio = models.ForeignKey(Municipio, on_delete=models.CASCADE)
     tipo_de_let = models.CharField(max_length=1, choices=TIPO_DE_NORMA_CHOISES, verbose_name='Tipo de sesión')
     nombre = models.CharField(max_length=200, verbose_name='Nombre')
     fuentes = models.ImageField(upload_to='pdf', blank=True, verbose_name='fuentes')

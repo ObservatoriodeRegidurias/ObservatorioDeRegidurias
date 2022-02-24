@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.preguntas',
     'apps.presupuesto',
     'apps.regidurias',
+    'apps.entidades'
 
 ]
 
@@ -95,7 +96,7 @@ WSGI_APPLICATION = 'regidurias.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres', 
+        'NAME': 'observatorio_local', 
         'USER': 'postgres', 
         'PASSWORD': 'admin',
         'HOST': '127.0.0.1', 

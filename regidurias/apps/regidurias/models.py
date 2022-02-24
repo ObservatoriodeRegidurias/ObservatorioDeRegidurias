@@ -1,5 +1,5 @@
 from django.db import models
-
+from apps.entidades.models import Entidades,Municipio
 # Create your models here.
 
 CARGO_CHOISES=(('1',('Presidente Muncipal')),
@@ -47,6 +47,8 @@ STATUS_CHOICES = (('1',('Borrador')),
 
 
 class Regidores(models.Model):
+    entidades = models.ForeignKey(Entidades, on_delete=models.CASCADE)
+    municipio = models.ForeignKey(Municipio, on_delete=models.CASCADE)
     year = models.CharField(max_length=9, verbose_name='Año')
     ayuntamiento = models.CharField(max_length=12, verbose_name='Ayuntamiento')
     cargo = models.CharField(max_length=2, choices=CARGO_CHOISES, verbose_name='Cargo')

@@ -1,7 +1,10 @@
 from django.db import models
+from apps.entidades.models import Entidades,Municipio
 
 # Create your models here.
 class Presupuesto(models.Model):
+    entidades = models.ForeignKey(Entidades, on_delete=models.CASCADE)
+    municipio = models.ForeignKey(Municipio, on_delete=models.CASCADE)
     year = models.IntegerField(max_length=4, verbose_name='Año')
     presupuesto = models.FloatField( verbose_name='Presupuesto')
     presupuesto_per_capital = models.FloatField(verbose_name='Presupuesto pre capital')
