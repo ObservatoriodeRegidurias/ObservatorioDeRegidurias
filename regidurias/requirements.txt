@@ -1,5 +1,5 @@
-asgiref==2.3.0
-astroid==2.4.0
+asgiref==3.4.1
+astroid==2.9.3
 atomicwrites==1.4.0
 attrs==21.2.0
 backports.entry-points-selectable==1.1.0
@@ -30,13 +30,13 @@ model-bakery==1.3.2
 odfpy==1.4.1
 openpyxl==3.0.7
 packaging==21.0
-Pillow==5.0.0
+Pillow==8.3.1
 platformdirs==2.4.1
 pluggy==0.13.1
-psycopg2==2.7.4
-psycopg2-binary==2.7.4
+psycopg2==2.9.3
+psycopg2-binary==2.8.6
 py==1.10.0
-pylint==2.6.0
+pylint==2.12.2
 pylint-celery==0.3
 pylint-django==2.5.0
 pylint-plugin-utils==0.7
@@ -46,7 +46,7 @@ pytest-django==4.4.0
 python-dateutil==2.8.2
 pytz==2020.1
 PyYAML==5.4.1
-six==1.12.0
+six==1.16.0
 soupsieve==2.0.1
 sqlparse==0.3.1
 tablib==3.0.0
