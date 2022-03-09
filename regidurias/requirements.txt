@@ -15,6 +15,7 @@ Django==2.2.13
 django-dynamic-fixture==3.1.1
 django-import-export==2.5.0
 django-querycount==0.7.0
+engineering-notation==0.6.0
 et-xmlfile==1.1.0
 factory-boy==3.2.0
 Faker==8.10.1
@@ -32,6 +33,7 @@ packaging==21.0
 Pillow==8.3.1
 platformdirs==2.4.1
 pluggy==0.13.1
+psycopg2==2.9.3
 psycopg2-binary==2.8.6
 py==1.10.0
 pylint==2.12.2
@@ -49,6 +51,7 @@ soupsieve==2.0.1
 sqlparse==0.3.1
 tablib==3.0.0
 text-unidecode==1.3
+tk-tools==0.14.0
 toml==0.10.2
 typing-extensions==4.0.1
 virtualenv==20.8.1
