@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 from pathlib import Path
 from django.core.management.utils import get_random_secret_key
-
+import tkinter
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -178,3 +178,8 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static/') 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 MEDIA_URL = '/static/media/'
+
+try:    
+    from Tkinter import * 
+except ImportError:
+    from tkinter import *
