@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 #DEBUG = True
 DEBUG = str(os.environ.get('DEBUG')) == "1" # 1 == True
 
-ALLOWED_HOSTS = ['observatorioderegidurias-uxk8l.ondigitalocean.app','localhost']
+ALLOWED_HOSTS = ['observatorioderegidurias-uxk8l.ondigitalocean.app','localhost', 'observatorioregidurias.org.mx','159.65.219.84']
 #ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 # ENV_ALLOWED_HOST = os.environ.get('DJANGO_ALLOWED_HOST') or None
 # ALLOWED_HOSTS = []
