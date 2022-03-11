@@ -25,8 +25,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-DEBUG = str(os.environ.get('DEBUG')) == "1" # 1 == True
+DEBUG = True
+#DEBUG = str(os.environ.get('DEBUG')) == "1" # 1 == True
 
 ALLOWED_HOSTS = ['observatorioderegidurias-uxk8l.ondigitalocean.app','localhost', 'observatorioregidurias.org.mx','159.65.219.84']
 #ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
