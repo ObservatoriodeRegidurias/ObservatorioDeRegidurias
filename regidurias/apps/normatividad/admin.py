@@ -3,7 +3,7 @@ from apps.normatividad.models import *
 
 # Register your models here.
 class NormatividadAdmin(admin.ModelAdmin):
-    list_display = ('tipo_de_let', 'nombre',)
+    list_display = ('tipo', 'nombre',)
 
 admin.site.register(Normatividad,NormatividadAdmin)
 

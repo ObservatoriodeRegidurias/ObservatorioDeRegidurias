@@ -31,11 +31,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['observatorioderegidurias-uxk8l.ondigitalocean.app','localhost', 'observatorioregidurias.org.mx','159.65.219.84']
 #ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 # ENV_ALLOWED_HOST = os.environ.get('DJANGO_ALLOWED_HOST') or None
-# ALLOWED_HOSTS = []
-# if not DEBUG:
-#     ALLOWED_HOSTS += [os.environ.get('DJANGO_ALLOWED_HOST')]
+#ALLOWED_HOSTS = []
 
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -90,12 +87,12 @@ WSGI_APPLICATION = 'regidurias.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 
 POSTGRES_DB = os.environ.get("POSTGRES_DB") #database name
