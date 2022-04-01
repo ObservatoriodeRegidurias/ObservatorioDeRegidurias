@@ -21,17 +21,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'bxupl70&aln0zgf7qraswt#kt+*55z$$=8v)8$1d4+r7e6g5^x'
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+SECRET_KEY = 'bxupl70&aln0zgf7qraswt#kt+*55z$$=8v)8$1d4+r7e6g5^x'
+#SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 #DEBUG = str(os.environ.get('DEBUG')) == "1" # 1 == True
 
-ALLOWED_HOSTS = ['localhost', 'observatorioregidurias.org.mx','159.65.219.84']
+#ALLOWED_HOSTS = ['localhost', 'observatorioregidurias.org.mx','159.65.219.84']
 #ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 # ENV_ALLOWED_HOST = os.environ.get('DJANGO_ALLOWED_HOST') or None
-#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
