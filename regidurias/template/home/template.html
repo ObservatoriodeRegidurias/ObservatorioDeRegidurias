@@ -1,68 +1,517 @@
-{% load static %}
+{%extends 'base.html'%}
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Página web en mantenimiento</title>
-	<meta charset="utf-8"/>
-	<meta name="description" content="Ejemplo práctico de aplicación del posicionamiento fijo"/>
-	<meta name="author" content="francesc ricart"/>
-	<style>
-		/*TIPOGRAFÍAS*/
-		@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
-		/*INICIALIZACIÓN DE ESTILOS*/
-		*{
-			margin:0;
-			padding:0;
-			box-sizing:border-box;
-		}
+{%block title%} <p>'Inicio'</p> {%endblock%}
 
-		body{background-color:#080101;}
+{%block extrahead%}
+    <meta name="description" content=''/>
+    <meta name='keywords' content=''/>
+    <meta property="og:url"                content=" " />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="observatorio de regidurías" />
+{%endblock%}
+{%block extrastyle%}
+<style>
+.item {
+    height: 350px;
+}
 
-		/*PERSONALIZACIÓN DE P.MANTENIMIENTO*/
-		.mantenimiento{
-			width:600px;
-			height:400px;
-			padding:32px;
-			border:1px solid #000;
-			border-radius:10px;
-			margin-top:-200px;
-			margin-left:-300px;
-			background-color:#D9E026;
-			position:fixed;
-			top:50%;
-			left:50%;
-		}
-		.mantenimiento h1, .mantenimiento h2, .mantenimiento p{
-			font-family:'Montserrat';
-      color: #DE376F;
-		}
+.header-tag{
+  margin-top:10px;
+}
 
-		.mantenimiento h1{
-			font-size:3em;
-			text-align:center;
-			padding:16px;
-		}
-		.mantenimiento h2{
-			font-size:2em;
-			font-style:italic;
-		}
-		.mantenimiento p{
-			margin:16px 0;
-			line-height:1.5em;
-		}
+.header-title {
+  font-size: 1.8rem;
+  margin-top: 20px;
+}   
 
-	</style>
-</head>
-<body>
-	<div class="mantenimiento">
-    <img src='{{STATIC_URL}}logo2.png' style="width: 100%; height: 100%;" alt='observatorio de regidurías'>
-		<h1>Página web en construcción</h1>
-		<p>Lo sentimos, no hemos encontrado un mensaje más original para decirte que estamos trabajando en ello.</p>
-		<h2>Web disponible en:</h2>
-		<p class="casio" id="reloj">4/abril/2022</p>
-	</div>
-</body>
-</html>
+.header-description{
+  display:none;
+}
+
+.header-button{
+  position: absolute;
+  bottom:2rem;
+  left:0;
+  right:0;
+}
+.header-opacity{
+  padding-left:3rem;
+  padding-right:3rem;    
+}
+  /* media queries*/
+
+  @media (min-width: 768px){
+    .header-tag{
+      margin-top: 60px;
+    }
+    .item {
+      height: 600px;
+    }
+    .header-title {
+      font-size: 2.5rem;
+      margin-top: 50px;
+    }
+    .header-description{
+      display:block;
+      margin-top: 30px;
+      font-size: 20px;
+      margin-left: 8rem;
+      margin-right: 8rem;
+    } 
+    .header-opacity{
+      padding-left: 7rem;
+      padding-right: 7rem;    
+    }
+    .afiliates_container_fix{
+      margin-left:2em;
+    }
+    .hc-donors{
+      font-size:.5em !important;
+      }
+  }
+
+
+  @media (min-width: 1024px){
+    .item {
+      height: 670px;
+    }
+    .header-title {
+      font-size: 3.8rem;
+      margin-top: 50px;
+    }
+    .header-description{
+      display:block;
+      margin-top: 19px;
+      margin-left: 11rem;
+      margin-right: 11rem;
+      font-size: 25px;
+    } 
+    .afiliates_container_fix{
+      margin-left:4em;
+    }
+    .hc-donors{
+      font-size:.6em !important;
+      }
+  }
+
+  @media (min-width: 1440px){
+    .item {
+      height: 700px;
+    }
+    .header-description{
+      display:block;
+      margin-top: 45px;
+      margin-left: 22rem;
+      margin-right: 22rem;
+    }
+    .header-opacity{
+      padding-left: 7rem;
+      padding-right: 7rem;
+    }
+    .header-button{
+      bottom:5rem;
+    }
+     .hc-donors{
+      font-size:1em !important;
+      }
+  }
+
+  @media (min-width: 2000px){
+  .item {
+    height: 800px;
+  }
+
+}
+
+/*Termina Carrousel*/
+
+.pointer{
+  cursor:pointer;
+}
+
+.pointer:hover{
+  font-size: 2.5em !important;
+}
+
+  @media (max-width: 375px) {
+       .counter{
+          font-size: 3.5em !important;
+      }
+  }
+.category-card:hover{
+  transform: scale(1.11)!important;
+  vertical-align: middle !important;
+  transition-duration:.5s!important;
+  transition-property: transform;
+}
+
+  .category-title{
+      display: none;
+  }
+
+ .category-card{
+  width: 10rem;
+  height:10rem;
+ }
+
+
+@media (max-width: 768px){
+  .category-title{
+      margin-top: 2rem;
+      display: block;
+  }
+    #categories-container{
+      margin-top:0rem !important;
+    }
+    .category-card{
+      width: 8rem;
+      heigth: 8rem;
+    }
+  }
+
+
+
+
+
+/* Slider Style
+--------------------------------------*/
+.cd-slider {
+  position: relative;
+  width: 100%;
+  height: 36rem;
+  overflow: hidden;
+}
+.cd-slider li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  transition: visibility 0s 1s;
+  will-change: visibility;
+}
+.image {
+  position: absolute;
+  top:0;
+  right:0 !important;
+  left: 0 !important;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  clip: rect(0, 80rem, 50rem, 80rem);
+  transition: clip .5s cubic-bezier(0.99, 0.01, 0.45, 0.9) .5s;
+  will-change: clip;
+}
+.content_hc {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2rem 0 0 2rem;
+  font-size: 2rem;
+  text-align: right;
+}
+.content_hc h2 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  transform: translateY(30%);
+  opacity: 0;
+  transition: transform .5s, opacity .5s;
+will-change: transform, opacity;
+}
+.content_hc a {
+  display: inline-block;
+  font-size: 2rem;
+  padding: 1.3 rem;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: transform .5s .1s, opacity .5s .1s;
+will-change: transform, opacity;
+  border: 1px 1px 1px 1px black;
+}
+/* Current Slide
+-------------------------------------*/
+li.current {
+  visibility: visible;
+  transition-delay: 0s;
+}
+li.current .image {
+  clip: rect(0, 80rem, 50rem, 0);
+}
+li.current .content_hc h2 {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 1s;
+}
+li.current .content_hc a {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 1.1s;
+}
+/* Prev Slide
+------------------------------------*/
+li.prev_slide .image {
+  clip: rect(0, 0, 50rem, 0);
+}
+.prev, .next, .counter {
+  vertical-align: middle;
+}
+.prev, .next {
+  position: relative;
+  display: inline-block;
+  height: 5rem;
+  width: 5rem;
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+}
+.prev::before, .next::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  border: .8rem solid transparent;
+  border-right-width: 1rem;
+  border-right-color: white;
+  border-left-width: 0;
+  width: 0;
+  height: 0;
+}
+.prev::after, .next::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateZ(0);
+  left: .5rem;
+  background: transparent;
+  height: .1rem;
+  min-height: 1px;
+  width: 2.5rem;
+  transition: width .3s;
+}
+.next::before {
+  right: .5rem;
+left: auto;
+  border-left-width: 1rem;
+  border-left-color: white;
+  border-right-width: 0;
+}
+.next::after {
+  right: .5rem;
+  left: auto;
+}
+.counter {
+  display: inline-block;
+  font-size: 2rem;
+}
+.counter span:last-child::before {
+  content: '/';
+  margin: 0 1rem;
+}
+.prev:hover::after, .next:hover::after {
+  width: 3.5rem;
+}
+
+.hc-donors{
+  font-size:1em;
+}
+
+@media screen and ( max-width: 375px ) {
+  .content_hc { padding-right: 2rem; background-color: rgba(29, 69, 113, 0.5)!important; }
+  nav { left: 0em; right: auto; }
+  .hc-donors{font-size:.68em !important;}
+}
+
+.circle-progress{
+  position: absolute;
+  bottom: 1em;
+  left: 0;
+}
+</style>
+{%endblock%}
+{%block content%}
+  <div id="carouselSpecialEvents" class="carousel slide header_bg" data-ride="carousel" >
+    <div class="carousel-inner" >
+    {% for events in event %}
+         {% include 'home/slider.html'%}
+    {% endfor %}
+    </div>
+    <a class="carousel-control-prev" href="#carouselSpecialEvents" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselSpecialEvents" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <script>
+    $(document).ready(function(){
+      $("#carouselSpecialEvents").carousel();
+      $(".carousel .item").first().addClass("active");
+    });
+  </script>
+
+<div class="">
+    {% for obsertatorios in observatorio %}
+    <p>{{obsertatorios.titulo}}</p>
+    <p>{{obsertatorios.descripcion}}</p>
+    <p>{{obsertatorios.link}}</p>
+    {% endfor %}
+
+</div>
+<div class="">
+    {% for noticias in noticia %}
+    <p>{{noticias.titulo}}</p>
+    <img  src="{{noticias.imagen.url}}" width="100%" height="100%">
+    <p>{{noticias.descripcion}}</p>
+    <p>{{noticias.link}}</p>
+    {% endfor %}
+
+</div>
+
+
+
+{%endblock%}
+
+<script>
+    (function() {
+
+function init(item) {
+    var items = item.querySelectorAll('li'),
+    current = 0,
+    autoUpdate = true,
+    timeTrans = 4000;
+
+    //create nav
+    var nav = document.createElement('nav');
+    nav.className = 'nav_arrows';
+
+    //create button prev
+    var prevbtn = document.createElement('button');
+    prevbtn.className = 'prev';
+    prevbtn.setAttribute('aria-label', 'Prev');
+
+    //create button next
+    var nextbtn = document.createElement('button');
+    nextbtn.className = 'next';
+    nextbtn.setAttribute('aria-label', 'Next');
+
+    //create counter
+    var counter = document.createElement('div');
+    counter.className = 'counter';
+    counter.innerHTML = "<span class='text-white'>1</span><span class='text-white'>"+items.length+"</span>";
+
+    if (items.length > 1) {
+        nav.appendChild(prevbtn);
+        nav.appendChild(counter);
+        nav.appendChild(nextbtn);
+        item.appendChild(nav);
+    }
+
+    items[current].className = "current";
+    if (items.length > 1) items[items.length-1].className = "prev_slide";
+
+    var navigate = function(dir) {
+        items[current].className = "";
+
+        if (dir === 'right') {
+            current = current < items.length-1 ? current + 1 : 0;
+        } else {
+            current = current > 0 ? current - 1 : items.length-1;
+        }
+
+        var	nextCurrent = current < items.length-1 ? current + 1 : 0,
+            prevCurrent = current > 0 ? current - 1 : items.length-1;
+
+        items[current].className = "current";
+        items[prevCurrent].className = "prev_slide";
+        items[nextCurrent].className = "";
+
+        //update counter
+        counter.firstChild.textContent = current + 1;
+    }
+
+item.addEventListener('mouseenter', function() {
+        autoUpdate = false;
+    });
+
+    item.addEventListener('mouseleave', function() {
+        autoUpdate = true;
+    });
+
+    setInterval(function() {
+        if (autoUpdate) navigate('right');
+    },timeTrans);
+
+    prevbtn.addEventListener('click', function() {
+        navigate('left');
+    });
+
+    nextbtn.addEventListener('click', function() {
+        navigate('right');
+    });
+
+    //keyboard navigation
+    document.addEventListener('keydown', function(ev) {
+        var keyCode = ev.keyCode || ev.which;
+        switch (keyCode) {
+            case 37:
+                navigate('left');
+                break;
+            case 39:
+                navigate('right');
+                break;
+        }
+    });
+
+    // swipe navigation
+    // from http://stackoverflow.com/a/23230280
+    item.addEventListener('touchstart', handleTouchStart, false);
+    item.addEventListener('touchmove', handleTouchMove, false);
+    var xDown = null;
+    var yDown = null;
+    function handleTouchStart(evt) {
+        xDown = evt.touches[0].clientX;
+        yDown = evt.touches[0].clientY;
+    };
+    function handleTouchMove(evt) {
+        if ( ! xDown || ! yDown ) {
+            return;
+        }
+
+        var xUp = evt.touches[0].clientX;
+        var yUp = evt.touches[0].clientY;
+
+        var xDiff = xDown - xUp;
+        var yDiff = yDown - yUp;
+
+        if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+            if ( xDiff > 0 ) {
+                /* left swipe */
+                navigate('right');
+            } else {
+                navigate('left');
+            }
+        }
+        /* reset values */
+        xDown = null;
+        yDown = null;
+    };
+
+
+}
+
+[].slice.call(document.querySelectorAll('.cd-slider')).forEach( function(item) {
+    init(item);
+});
+
+})();
+</script>
             
 

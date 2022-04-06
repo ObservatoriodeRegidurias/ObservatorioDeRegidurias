@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+#from django.contrib.staticfiles import staticfiles_urlpattern
 from apps.regidurias.views import RegiduriasView
 from apps.cabildo.views import CabildoView
 from apps.contacto.views import ContactoView
@@ -41,6 +42,9 @@ urlpatterns = [
     path('presupuesto/',PresupuestoView.as_view(), name='presupuesto')
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+#urlpatterns+=staticfiles_urlpattern()
