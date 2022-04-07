@@ -67,7 +67,7 @@ class Comision_5(models.Model):
     Comision_5 = models.CharField(max_length=100,verbose_name='comision',default="Some String")
 
     def __str__(self):
-        return self.comision_5
+        return self.Comision_5
 
 class Comision_6(models.Model):
     Comision_6 = models.CharField(max_length=100,verbose_name='comision',default="Some String")

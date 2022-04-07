@@ -1,5 +1,5 @@
 {%extends 'base.html'%}
-
+{% load widget_tweaks %}
 
 {%block title%} <p>'Sesiones Cabildo'</p> {%endblock%}
 
@@ -12,46 +12,55 @@
 {%endblock%}
 
 {%block content%}
-
-{%for cabildos in cabildo%}       
-                    <table>
-                        <tr>
-                        {{cabildos.entidad}}
-                        </tr>
-                        <tr>
-                        {{cabildos.municipio}}
-                        </tr>
-                        <tr>
-                        {{cabildos.ayuntamiento}}
-                        </tr>
-                        {%if cabildos.tipo_de_sesion == '1'%}
-                        <tr>
-                        Solemne
-                        </tr>
-                        {%elif cabildos.tipo_de_sesion == '2'%}
-                        <tr>
-                        Ordinaria
-                        </tr>
-                        {%else%}
-                        <tr>
-                        Extraordinaria
-                        </tr>
-                        {%endif%}
-                        {%if cabildos.modalidad == '1'%}
-                        <tr>
-                        Presencial
-                        {%else%}
-                        <tr>
-                        Virtual
-                        </tr>
-                        {%endif%}
-                        <tr>
-                        {{cabildos.actas}}
-                        </tr>
+<form method="get">
+    <div class="well">
+      <h4 style="margin-top: 0">Filter</h4>
+      <div class="row">
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.entidades.label_tag }}
+          {% render_field filter.form.entidades class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.municipio.label_tag }}
+          {% render_field filter.form.municipio class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.fecha.label_tag }}
+          {% render_field filter.form.fecha class="form-control" %}
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <span class="glyphicon glyphicon-search"></span> Search
+      </button>
+    </div>
+  </form>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Date joined</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cabildo in filter.qs %}
+        <tr>
+          <td>{{ cabildo.entidades }}</td>
+          <td>{{ cabildo.ayuntamiento }}</td>
+          <td>{{ cabildo.modalidad }}</td>
+          <td>{{ cabildo.actas }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No data</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
                         
 
 
 
-                    </table>
-                {%endfor%}
+                
 {%endblock%}
