@@ -105,12 +105,22 @@ a:hover {
         <script src="{% static 'lib/bootstrap-4.4.1-dist/js/jquery-3.4.1.slim.min.js' %}" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    </head>
-
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+      </head>
+<style>
+   .nav-link{
+      color: #D91C5C;
+      font-size:16px;
+      font-family: 'Montserrat';
+      text-align: center;
+   }
+</style>
 
         <body>
 
-          <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+          <nav class="navbar navbar-expand-lg navbar static-top" style="background-color: #000000;">
             <div class="container">
               <a class="navbar-brand" href="/">
                 <img src="{% static "img/LOGO.png" %}" style="width: 400px; height: 100px;" alt='observatorio de regidurías'>
@@ -143,7 +153,12 @@ a:hover {
               {%endblock%}
               {%block content%}
               {%endblock%}
-              <footer class="container-fluid bg-grey py-5">
+              <div class="container-fluid py-3" style="background-color: #d9e022; text-align: center;">
+               <div class="row">
+                <a class="nav-link" href="{%url 'contacto' %}">¿Quieres formar parte de observatorio de Regidurías?</a>   
+               </div>
+            </div>
+              <footer class="container-fluid py-4" style="background-color: #000000;">
                 <div class="container">
                    <div class="row">
                       <div class="col-md-6">
