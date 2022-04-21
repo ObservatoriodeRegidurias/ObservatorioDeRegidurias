@@ -1,4 +1,3 @@
-from tkinter import N
 from apps.normatividad.models import Normatividad
 import django_filters
  

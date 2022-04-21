@@ -10,3 +10,8 @@ class RegiduriasView(View):
         regidores =  Regidurias.objects.all()
         regidores_filter = RegiduriasFilter(request.GET, queryset=regidores)
         return render(request, 'regidurias/template.html', {'filter': regidores_filter})
+
+class RegidorView(View):
+    def get(self, request, *args, **kwargs):
+        Regidor =  Regidurias.objects.all().order_by('-created_at')
+        return render(request, 'regidurias/template_regidor.html', locals())

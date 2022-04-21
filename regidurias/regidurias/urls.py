@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 #from django.contrib.staticfiles import staticfiles_urlpattern
-from apps.regidurias.views import RegiduriasView
+from apps.regidurias.views import RegiduriasView, RegidorView
 from apps.cabildo.views import CabildoView
 from apps.contacto.views import ContactoView
 from apps.normatividad.views import NormatividadView
@@ -39,7 +39,8 @@ urlpatterns = [
     path('contacto/',ContactoView.as_view(), name='contacto'),
     path('normatividad/',NormatividadView.as_view(), name='normatividad'),
     path('preguntas/',PreguntasView.as_view(), name='preguntas'),
-    path('presupuesto/',PresupuestoView.as_view(), name='presupuesto')
+    path('presupuesto/',PresupuestoView.as_view(), name='presupuesto'),
+    path('regidor/',RegidorView.as_view(), name='regidor')
 ]
 
 # if settings.DEBUG:

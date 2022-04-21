@@ -89,7 +89,7 @@
   
       {% for regidurias in filter.qs %}
       <div>
-
+<a href="{%url 'regidor' %}">
         <div class="card">
           <div class="additional">
             <div class="user-card">
@@ -109,7 +109,7 @@
       
       </div>
 
-     
+    </a>     
       {% empty %}
     
         
