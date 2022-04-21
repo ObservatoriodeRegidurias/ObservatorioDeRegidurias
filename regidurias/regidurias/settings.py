@@ -22,15 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'bxupl70&aln0zgf7qraswt#kt+*55z$$=8v)8$1d4+r7e6g5^x'
-#SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-#DEBUG = str(os.environ.get('DEBUG')) == "1" # 1 == True
-
-#ALLOWED_HOSTS = ['localhost', 'observatorioregidurias.org.mx','159.65.219.84']
-#ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
-# ENV_ALLOWED_HOST = os.environ.get('DJANGO_ALLOWED_HOST') or None
 ALLOWED_HOSTS = []
 
 
@@ -85,43 +79,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'regidurias.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
-
-# POSTGRES_DB = os.environ.get("POSTGRES_DB") #database name
-# POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD") # database user password
-# POSTGRES_USER = os.environ.get("POSTGRES_USER") # database username
-# POSTGRES_HOST = os.environ.get("POSTGRES_HOST") # database host
-# POSTGRES_PORT = os.environ.get("POSTGRES_PORT") # database port
-
-# POSTGRES_READY = (
-#     POSTGRES_DB is not None
-#     and POSTGRES_PASSWORD is not None
-#     and POSTGRES_USER is not None
-#     and POSTGRES_HOST is not None
-#     and POSTGRES_PORT is not None
-# )
-
-# if POSTGRES_READY:
-#     DATABASES = {
-#         "default": {
-#             "ENGINE": "django.db.backends.postgresql_psycopg2",
-#             "NAME": POSTGRES_DB,
-#             "USER": POSTGRES_USER,
-#             "PASSWORD": POSTGRES_PASSWORD,
-#             "HOST": POSTGRES_HOST,
-#             "PORT": POSTGRES_PORT,
-#         }
-#     }
 #Databases PostgreSQL
 DATABASES = {
     'default': {
