@@ -254,7 +254,7 @@ li.current .content_hc a {
 /* Prev Slide
 ------------------------------------*/
 li.prev_slide .image {
-  clip: rect(0, 0, 50rem, 0);
+  clip: rect(0, 0, 30rem, 0);
 }
 .prev, .next, .counter {
   vertical-align: middle;
@@ -334,7 +334,7 @@ left: auto;
 </style>
 {%endblock%}
 {%block content%}
-  <div id="carouselSpecialEvents" class="carousel slide header_bg" data-ride="carousel" >
+  <div id="carouselSpecialEvents" class="carousel slide " data-ride="carousel" >
     <div class="carousel-inner" >
     {% for events in event %}
          {% include 'home/slider.html'%}
@@ -356,15 +356,19 @@ left: auto;
       $(".carousel .item").first().addClass("active");
     });
   </script>
-
-<div class="">
+<br>
+<div class="container" style="background: #f7f5f5; font-weight: bold; padding: 15px; border-left:8px solid #ff0080; border-top-left-radius:8px; border-bottom-left-radius:8px;">
+<div class="row">
+  <div class="w-50 mx-auto text-center">
     {% for obsertatorios in observatorio %}
-    <p>{{obsertatorios.titulo}}</p>
-    <p>{{obsertatorios.descripcion}}</p>
+    <h1 style="font-size:40px; font-family: 'Montserrat';">{{obsertatorios.titulo}}</h1>
+    <p style="font-size:16px; font-family: 'Montserrat';">{{obsertatorios.descripcion}}</p>
     <p>{{obsertatorios.link}}</p>
     {% endfor %}
-
+  </div>
 </div>
+</div>
+
 <div class="">
     {% for noticias in noticia %}
     <p>{{noticias.titulo}}</p>
