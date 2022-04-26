@@ -1,5 +1,5 @@
 {%extends 'base.html'%}
-
+{% load embed_video_tags %}
 {%block title%} <p>'Inicio'</p> {%endblock%}
 
 {%block extrahead%}
@@ -331,9 +331,11 @@ left: auto;
   bottom: 1em;
   left: 0;
 }
+
 </style>
 {%endblock%}
 {%block content%}
+<body>
   <div id="carouselSpecialEvents" class="carousel slide " data-ride="carousel" >
     <div class="carousel-inner" >
     {% for events in event %}
@@ -363,22 +365,19 @@ left: auto;
     {% for obsertatorios in observatorio %}
     <h1 style="font-size:40px; font-family: 'Montserrat';">{{obsertatorios.titulo}}</h1>
     <p style="font-size:16px; font-family: 'Montserrat';">{{obsertatorios.descripcion}}</p>
-    <p>{{obsertatorios.link}}</p>
+    <p style="font-size:16px; font-family: 'Montserrat';">{{obsertatorios.link_cabildo}}</p>
+    {% video obsertatorios.link_cabildo 'medium'%}
+  
     {% endfor %}
   </div>
 </div>
 </div>
+<br>
 
-<div class="">
-    {% for noticias in noticia %}
-    <p>{{noticias.titulo}}</p>
-    <img  src="{{noticias.imagen.url}}" width="100%" height="100%">
-    <p>{{noticias.descripcion}}</p>
-    <p>{{noticias.link}}</p>
-    {% endfor %}
+{%include 'home/card.html'%}
 
-</div>
-
+<br>
+</body>
 
 
 {%endblock%}

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'django_filters',
+    'embed_video',
     #apps
     'apps.cabildo',
     'apps.contacto',
@@ -73,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #'django.core.context_processors.request',
             ],
         },
     },

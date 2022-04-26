@@ -1,5 +1,8 @@
 from django.db import models
-
+from embed_video.fields import EmbedVideoField
+from django.db.models.signals import pre_save, post_save
+from django.urls import reverse
+from .utils import slugify_instance_title
 STATUS_CHOICES = (('1',('Borrador')),
                 ('2',('Publicado')),
                 ('3',('Finalizado')))
@@ -10,9 +13,43 @@ class   Noticias(models.Model):
     imagen = models.ImageField (upload_to='noticias', blank=True, null=True)
     link = models.URLField(blank=True, null=True, name="noticias_link", verbose_name="noticias_link")
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default=1,)
+    slug = models.SlugField(unique=True, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_to = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
+    @property
+    def name(self):
+        return self.titulo
+
+    def get_absolute_url(self):
+        return reverse("noticias:detail", kwargs={"slug": self.slug})
+
+    def save(self, *args, **kwargs):
+        # obj = Article.objects.get(id=1)
+        # set something
+        # if self.slug is None:
+        #     self.slug = slugify(self.title)
+        # if self.slug is None:
+        #     slugify_instance_title(self, save=False)
+        super().save(*args, **kwargs)
+        # obj.save()
+        # do another something
+
+
+def noticias_pre_save(sender, instance, *args, **kwargs):
+# print('pre_save')
+    if instance.slug is None:
+        slugify_instance_title(instance, save=False)
+
+pre_save.connect(noticias_pre_save, sender=Noticias)
+
+
+def noticias_post_save(sender, instance, created, *args, **kwargs):
+# print('post_save')
+    if created:
+        slugify_instance_title(instance, save=True)
+
+post_save.connect(noticias_post_save, sender=Noticias)
 class Event(models.Model):
     titulo = models.CharField(max_length=200)
     imagen = models.ImageField (upload_to='carrucel', blank=True, null=True)
@@ -23,6 +60,7 @@ class Event(models.Model):
 class Observatorio(models.Model):
     titulo = models.CharField(max_length=200)
     descripcion = models.TextField()
-    link_cabildo = models.URLField(blank=True, null=True, name="cabildo_link", verbose_name="cabildo_link")
+    link_cabildo = EmbedVideoField(default="Some String")
+    path_thumbnail = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_to = models.DateTimeField(auto_now_add=True, blank=True, null=True)
