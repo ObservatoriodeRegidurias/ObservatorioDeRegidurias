@@ -110,8 +110,8 @@ CARGO_CHOISES=(('1',('Presidente Muncipal')),
                 ('5',('Regidor MR')),
                 ('6',('Regidor RP')))
 
-GENERO_CHOISES=(('1',('Femenino')),
-                ('2',('Masculino')),
+GENERO_CHOISES=(('1',('Mujer')),
+                ('2',('Hombre')),
                 ('3',('No binario')))
 
 
@@ -137,9 +137,9 @@ class Regidurias(models.Model):
     foto = models.ImageField(upload_to='img', blank=True, verbose_name='Foto')
     telefono = models.IntegerField(verbose_name='Telefono')
     correo = models.CharField(max_length=120, verbose_name='Correo')
-    facebook = models.URLField(blank=True, null=True, name="facebook", verbose_name="Facebook")
-    twitter = models.URLField(blank=True, null=True, name="twitter", verbose_name="Twitter")
-    instagram = models.URLField(blank=True, null=True, name="instagram", verbose_name="Instagram")
+    facebook = models.CharField(max_length=320,blank=True, null=True, name="facebook", verbose_name="Facebook",default="Some String")
+    twitter = models.CharField(max_length=320,blank=True, null=True, name="twitter", verbose_name="Twitter",default="Some String")
+    instagram = models.CharField(max_length=320,blank=True, null=True, name="instagram", verbose_name="Instagram",default="Some String")
     status = models.CharField(max_length=1, choices=STATUS_CHOICES,default=1,)
     comision_1_presidencia = models.ForeignKey(Comision_1_presidencia, on_delete=models.CASCADE)
     comision_2_presidencia = models.ForeignKey(Comision_2_presidencia, on_delete=models.CASCADE)
@@ -157,6 +157,7 @@ class Regidurias(models.Model):
     comision_8 = models.ForeignKey(Comision_8, on_delete=models.CASCADE)
     comision_9 = models.ForeignKey(Comision_9, on_delete=models.CASCADE)
     actas = models.FileField(blank=True, null=True, upload_to='chapters/%Y/%m/%D/',verbose_name='actas')
+    actas_dos = models.FileField(blank=True, null=True, upload_to='chapters/%Y/%m/%D/',verbose_name='actas 2')
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_to = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
@@ -168,15 +169,8 @@ class Regidurias(models.Model):
         return reverse("regidurias:detail", kwargs={"slug": self.slug})
 
     def save(self, *args, **kwargs):
-        # obj = Article.objects.get(id=1)
-        # set something
-        # if self.slug is None:
-        #     self.slug = slugify(self.title)
-        # if self.slug is None:
-        #     slugify_instance_title(self, save=False)
         super().save(*args, **kwargs)
-        # obj.save()
-        # do another something
+
 
 
 def regidurias_pre_save(sender, instance, *args, **kwargs):

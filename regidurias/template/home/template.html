@@ -373,9 +373,9 @@ left: auto;
 </div>
 </div>
 <br>
-
-{%include 'home/card.html'%}
-
+{% for noticias in noticia %}
+  {%include 'home/card.html'%}
+{% endfor %}
 <br>
 </body>
 

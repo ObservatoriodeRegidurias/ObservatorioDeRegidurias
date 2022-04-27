@@ -13,18 +13,13 @@ class HomeView(View):
         return render(request, 'home/template.html', locals())
 
 
-def article_detail_view(request, slug=None):
-    article_obj = None
-    if slug is not None:
-        try:
-            article_obj = Noticias.objects.get(slug=slug)
-        except Noticias.DoesNotExist:
-            raise Http404
-        except Noticias.MultipleObjectsReturned:
-            article_obj = Noticias.objects.filter(slug=slug).first()
-        except:
-            raise Http404
-    context = {
-        "object": article_obj,
-    }
-    return render(request, "home/noticias.html", context=context)
+
+class NoticiasView(View):
+    @property
+    def noticia(self):
+        return self.kwargs.get('noticias')
+
+    def get(self, request, *args, **kwargs):
+        noticia = Noticias.objects.filter(slug=self.noticia) 
+        print('noticias', noticia)  
+        return render(request, 'home/template.html', locals())

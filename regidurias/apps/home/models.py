@@ -9,9 +9,10 @@ STATUS_CHOICES = (('1',('Borrador')),
 # Create your models here.
 class   Noticias(models.Model):
     titulo = models.CharField(max_length=200)
-    descripcion = models.TextField()
+    descripcion = models.TextField(verbose_name="descripcion",default="Some String")
+    nota = models.TextField(max_length=3000,blank=True, null=True, name="nota", verbose_name="noticia",default="Some String")
     imagen = models.ImageField (upload_to='noticias', blank=True, null=True)
-    link = models.URLField(blank=True, null=True, name="noticias_link", verbose_name="noticias_link")
+    link = models.CharField(max_length=320,blank=True, null=True, name="link", verbose_name="noticias_link")
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default=1,)
     slug = models.SlugField(unique=True, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
@@ -25,19 +26,10 @@ class   Noticias(models.Model):
         return reverse("noticias:detail", kwargs={"slug": self.slug})
 
     def save(self, *args, **kwargs):
-        # obj = Article.objects.get(id=1)
-        # set something
-        # if self.slug is None:
-        #     self.slug = slugify(self.title)
-        # if self.slug is None:
-        #     slugify_instance_title(self, save=False)
         super().save(*args, **kwargs)
-        # obj.save()
-        # do another something
 
 
 def noticias_pre_save(sender, instance, *args, **kwargs):
-# print('pre_save')
     if instance.slug is None:
         slugify_instance_title(instance, save=False)
 
