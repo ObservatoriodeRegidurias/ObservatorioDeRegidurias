@@ -118,7 +118,7 @@ img {
             <div class="card_content">
               <h2 class="card_title">{{noticias.titulo}}</h2>
               <p class="card_text">{{noticias.descripcion}}</p>
-              <a class="btn card_btn" href="{%url 'noticias' noticias.slug%}">Leer más</a>
+              {% if noticias.link %}<a class="btn" href="{{noticias.link}}" style="background: linear-gradient(to bottom left, #d91c5c 40%, #d91c5c 100%); color: #ffffff;">Leer más</a>{% endif %}
             </div>
           </div>
         </li>

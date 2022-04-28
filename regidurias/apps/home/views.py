@@ -14,12 +14,12 @@ class HomeView(View):
 
 
 
-class NoticiasView(View):
-    @property
-    def noticia(self):
-        return self.kwargs.get('noticias')
+# class NoticiasView(View):
+#     # @property
+#     # def noticia(self):
+#     #     return self.kwargs.get('noticias')
 
-    def get(self, request, *args, **kwargs):
-        noticia = Noticias.objects.filter(slug=self.noticia) 
-        print('noticias', noticia)  
-        return render(request, 'home/template.html', locals())
+#     def get(self, request, *args, **kwargs):
+#         noticia = Noticias.objects.filter(slug=self.noticia) 
+        
+#         return render(request, 'home/noticias.html', locals())

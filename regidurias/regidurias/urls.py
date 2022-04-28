@@ -23,7 +23,7 @@ from apps.contacto.views import ContactoView
 from apps.normatividad.views import NormatividadView
 from apps.preguntas.views import PreguntasView
 from apps.presupuesto.views import PresupuestoView
-from apps.home.views import NoticiasView
+# from apps.home.views import NoticiasView
 # from apps.home.views import (
 #     article_detail_view
 # )
@@ -43,7 +43,7 @@ urlpatterns = [
     path('preguntas/',PreguntasView.as_view(), name='preguntas'),
     path('presupuesto/',PresupuestoView.as_view(), name='presupuesto'),
     path('regidor/',RegidorView.as_view(), name='regidor'),
-    path('noticias/<slug:noticia>/',NoticiasView.as_view(), name='noticias')
+    # path('<slug:noticia>/',NoticiasView.as_view(), name='noticias')
 ]
 
 if settings.DEBUG:
