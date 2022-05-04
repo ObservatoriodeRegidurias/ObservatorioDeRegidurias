@@ -121,7 +121,7 @@ STATUS_CHOICES = (('1',('Borrador')),
 
 
 class Regidurias(models.Model):
-    slug = models.SlugField(unique=True, blank=True, null=True)
+    slug = models.CharField(unique=True,max_length=1000, null=True, blank=True, default="aquí no poner nada")
     entidades = models.ForeignKey(Entidades, on_delete=models.CASCADE)
     municipio = models.ForeignKey(Municipio, on_delete=models.CASCADE)
     ayuntamiento = models.CharField(max_length=12, verbose_name='Ayuntamiento')

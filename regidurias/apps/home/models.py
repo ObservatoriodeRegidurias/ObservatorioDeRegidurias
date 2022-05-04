@@ -13,8 +13,8 @@ class   Noticias(models.Model):
     nota = models.TextField(max_length=3000,blank=True, null=True, name="nota", verbose_name="noticia",default="Some String")
     imagen = models.ImageField (upload_to='noticias', blank=True, null=True)
     link = models.CharField(max_length=320,blank=True, null=True, name="link", verbose_name="noticias_link")
-    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default=1,)
-    slug = models.SlugField(unique=True, blank=True, null=True)
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default=1)
+    slug = models.CharField(unique=True,max_length=1000, null=True, blank=True, default="aquí no poner nada")
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_to = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
