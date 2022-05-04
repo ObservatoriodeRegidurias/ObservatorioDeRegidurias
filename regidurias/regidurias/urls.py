@@ -43,7 +43,7 @@ urlpatterns = [
     path('preguntas/',PreguntasView.as_view(), name='preguntas'),
     path('presupuesto/',PresupuestoView.as_view(), name='presupuesto'),
     path('regidor/',RegidorView.as_view(), name='regidor'),
-    path('<slug:slug>/',article_detail_view, name='noticias')
+    path('noticias/<slug:slug>',article_detail_view, name='noticias')
     #path('noticias/',NoticiasView.as_view(), name='noticias')
 ]
 
