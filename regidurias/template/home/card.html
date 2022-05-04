@@ -3,14 +3,11 @@
     /* Font */
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
 
-/* Design */
 *,
 *::before,
-
-
-
-
-
+*::after {
+  box-sizing: border-box;
+}
 h1 {
     font-family: 'Montserrat';
     font-size: 24px;
@@ -81,7 +78,7 @@ img {
 .card_content {
     font-family: 'Montserrat';
   padding: 1rem;
-  background: linear-gradient(to bottom left, #d91c5c 40%, #db5682 100%);
+  background: linear-gradient(to bottom left, #d91c5c 40%, #dea5b8 100%);
 }
 
 .card_title {
@@ -112,20 +109,22 @@ img {
 </style>
 {%endblock%}
 {%block content%}
-{% for noticias in noticia %}
-<ul class="cards">
-    <li class="cards_item">
-      <div class="card">
-        <div class="card_image"><img  src="{{noticias.imagen.url}}"></div>
-        <div class="card_content">
-          <h2 class="card_title">{{noticias.titulo}}</h2>
-          <p class="card_text">{{noticias.descripcion}}</p>
-          <button class="btn card_btn" href="{%url 'noticias' %}">Leer más</button>
-        </div>
-      </div>
-    </li>
-  </ul>
+<div class="main">
+<span class="">
+    <ul class="cards">
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image"><img  src="{{noticias.imagen.url}}"></div>
+            <div class="card_content">
+              <h2 class="card_title">{{noticias.titulo}}</h2>
+              <p class="card_text">{{noticias.descripcion}}</p>
+              {% if noticias.link %}<a class="btn" href="{{noticias.link}}" style="background: linear-gradient(to bottom left, #d91c5c 40%, #d91c5c 100%); color: #ffffff;">Leer más</a>{% endif %}
+            </div>
+          </div>
+        </li>
+      </ul>
+    </span>
 </div>
-  {% endfor %}
+
   <br>
-{%endblock%}
+  {%endblock%}

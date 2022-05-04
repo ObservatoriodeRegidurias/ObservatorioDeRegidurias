@@ -38,12 +38,6 @@
   </form>
   <table class="table table-bordered">
     <thead>
-      <tr>
-        <th>Username</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Date joined</th>
-      </tr>
     </thead>
     <tbody>
       {% for normatividad in filter.qs %}
@@ -51,7 +45,6 @@
           <td>{{ normatividad.entidades }}</td>
           <td>{{ normatividad.municipio }}</td>
           <td>{{ normatividad.tipo }}</td>
-          <td>{{ user.date_joined }}</td>
         </tr>
       {% empty %}
         <tr>
