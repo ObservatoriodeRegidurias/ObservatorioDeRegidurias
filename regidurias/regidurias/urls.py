@@ -23,10 +23,7 @@ from apps.contacto.views import ContactoView
 from apps.normatividad.views import NormatividadView
 from apps.preguntas.views import PreguntasView
 from apps.presupuesto.views import PresupuestoView
-# from apps.home.views import NoticiasView
-# from apps.home.views import (
-#     article_detail_view
-# )
+#from apps.home.views import NoticiasView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('sesion_cabildo/',include(('apps.cabildo.urls','sesion_cabildo'))),
@@ -42,8 +39,8 @@ urlpatterns = [
     path('normatividad/',NormatividadView.as_view(), name='normatividad'),
     path('preguntas/',PreguntasView.as_view(), name='preguntas'),
     path('presupuesto/',PresupuestoView.as_view(), name='presupuesto'),
-    path('regidor/',RegidorView.as_view(), name='regidor'),
-    # path('<slug:noticia>/',NoticiasView.as_view(), name='noticias')
+    path('regidor/<slug:regidurias>/',RegidorView.as_view(), name='regidor'),
+    #path('<slug:noticias>/',NoticiasView.as_view(), name='noticias')
 ]
 
 if settings.DEBUG:

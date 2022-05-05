@@ -1,0 +1,236 @@
+{%extends 'base.html'%}
+
+{%block title%} <p>'Regidor'</p> {%endblock%}
+
+{%block extrahead%}
+    <meta name="description" content=''/>
+    <meta name='keywords' content=''/>
+    <meta property="og:url"                content=" " />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="observatorio de regidurías" />
+    <meta charset="utf-8">
+{%endblock%}
+
+{%block content%}
+<style>
+.main_grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-column-gap: 1em;
+}
+
+
+.foto {
+  /*Display*/
+  width:100%;
+  height:auto;
+  padding: 1px;
+  clip-path: circle(50% at center);
+  filter: grayscale(100%) contrast(120%);
+}
+
+.left_side{
+  padding: 1em;
+  background-color: #2c2057;
+  color: white;
+}
+
+.left_side>hr{
+  color: white
+}
+
+.left_side>ul {
+  font-weight: 300;
+}
+
+.right_side{
+  padding:1em;
+  grid-template-rows: repeat (4 auto) 1fr;
+}
+
+.right_side>p{
+  text-align: justify;
+  font-weight: 300;
+}
+
+.right_grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-row-gap: 0.5em;
+  grid-column-gap: 1em;
+}
+
+.right_grid >h2{
+  grid-column: span 2;
+}
+
+/*Grid trabajo*/
+
+.trabajo {
+  display: grid;
+  grid-column: span 2;
+  grid-template-columns: subgrid;
+}
+
+.posicion {
+  text-align: right;
+  margin-top: 0px;
+  margin-bottom: 0.1em;
+  font-weight: 600;
+  font-size: 0.8em;
+  font-weight: ;
+}
+
+.empresa {
+  margin-top: 0px;
+  margin-bottom: 0.1em;
+  font-weight: 600;
+  font-size: 0.8em;
+}
+
+.fecha {
+  text-align: right;
+  margin-top: 0px;
+  margin-bottom: 0.1em;
+  font-size: 0.8em;
+  font-weight: 300;
+}
+
+.descripcion {
+  margin-top: 0px;
+  margin-bottom: 0.1em;
+  font-size: 0.8em;
+  text-align: justify;
+  font-weight: 300;
+}
+
+/* Grid Educación */
+.estudio {
+  display: grid;
+  grid-column: span 2;
+  grid-template-columns: subgrid;
+}
+
+.curso {
+  text-align: right;
+  margin-top: 0px;
+  margin-bottom: 0.1em;
+  font-weight: 600;
+  font-size: 0.8em;
+  font-weight: ;
+}
+
+.centro_ed {
+  margin-top: 0px;
+  margin-bottom: 0.1em;
+  font-weight: 600;
+  font-size: 0.8em;
+}
+
+</style>
+
+{% for regidor in regiduria %}
+  <div class="main_grid">
+    <div class="left_side">
+      <img class="foto" src='{{regidurias.foto.url}}'>
+      <h1>Juan Perez</h1>
+      <h2>Contacto</h2>
+      <hr>
+      <ul>
+        <li>200 Calle siempreviva</li>
+        <li>(+45) 942 666 999</li>
+        <li>correo@servidor.mail</li>
+      </ul>
+      <h2>Idiomas</h2>
+      <hr>
+      <ul>
+        <li>Español</li>
+        <li>Inglés</li>
+        <li>Francés</li>
+        <li>Alemán</li>
+      </ul>
+      <h2>Software</h2>
+      <hr>
+      <ul>
+        <li>Ms Office</li>
+        <li>SPSS</li>
+        <li>Stata</li>
+        <li>Wordpress</li>
+      </ul>
+    </div>
+    <div class="right_side">
+      <div>
+        <h2>Acerca de mi</h2>
+        <hr>
+      </div>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+      <div>
+        <h2>Experiencia</h2>
+        <hr>
+      </div>
+      <div class="right_grid">
+        <div class="trabajo">
+          <div class="posicion">Posición</div>
+          <div class="empresa">Empresa</div>
+          <div class="fecha">Julio 2019 - Diciembre 2019</div>
+          <div class="descripcion">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At</div>
+        </div>
+              <div class="trabajo">
+          <div class="posicion">Posición</div>
+          <div class="empresa">Empresa</div>
+          <div class="fecha">Julio 2019 - Diciembre 2019</div>
+          <div class="descripcion">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At</div>
+        </div>
+              <div class="trabajo">
+          <div class="posicion">Posición</div>
+          <div class="empresa">Empresa</div>
+          <div class="fecha">Julio 2019 - Diciembre 2019</div>
+          <div class="descripcion">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At</div>
+        </div>
+              <div class="trabajo">
+          <div class="posicion">Posición</div>
+          <div class="empresa">Empresa</div>
+          <div class="fecha">Julio 2019 - Diciembre 2019</div>
+          <div class="descripcion">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At</div>
+        </div>
+              <div class="trabajo">
+          <div class="posicion">Posición</div>
+          <div class="empresa">Empresa</div>
+          <div class="fecha">Julio 2019 - Diciembre 2019</div>
+          <div class="descripcion">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At</div>
+        </div>
+              <div class="trabajo">
+          <div class="posicion">Posición</div>
+          <div class="empresa">Empresa</div>
+          <div class="fecha">Julio 2019 - Diciembre 2019</div>
+          <div class="descripcion">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At</div>
+        </div>
+        
+        </div>
+  <div>
+        <h2>Educación</h2>
+        <hr>
+      </div>
+      <div class="right_grid">
+        <div class="estudio">
+          <div class="curso">Maestría en hacer cosas</div>
+          <div class="centro_ed">Universidad de Mas allá</div>
+          <div class="fecha">2017-2018</div>
+        </div>
+        <div class="estudio">
+          <div class="curso">Licenciatura en pensar</div>
+          <div class="centro_ed">Pontificia Universidad de por aca</div>
+          <div class="fecha">2012</div>
+        </div>
+        <div class="estudio">
+          <div class="curso">Bachillerato en lanzamiento</div>
+          <div class="centro_ed">Universidad de aqui nomas</div>
+          <div class="fecha">2003-2011</div>
+        </div>
+      </div>
+  
+    </div>
+  
+  </div>
+{% endfor %}
+{%endblock%}

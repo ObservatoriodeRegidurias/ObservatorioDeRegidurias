@@ -6,6 +6,10 @@ from django.http import Http404
 from django.shortcuts import render, redirect
 # Create your views here.
 class HomeView(View):
+    @property
+    def noticias(self):
+        return self.kwargs["noticias"]
+
     def get(self, request, *args, **kwargs):
         event =  Event.objects.filter(status=2).order_by('-created_at')
         noticia = Noticias.objects.filter(status=2).order_by('-created_at')
@@ -14,12 +18,7 @@ class HomeView(View):
 
 
 
-# class NoticiasView(View):
-#     # @property
-#     # def noticia(self):
-#     #     return self.kwargs.get('noticias')
-
-#     def get(self, request, *args, **kwargs):
-#         noticia = Noticias.objects.filter(slug=self.noticia) 
-        
-#         return render(request, 'home/noticias.html', locals())
+class NoticiasView(View):
+    def get(self, request, *args, **kwargs):
+        noticia = Noticias.objects.all().order_by('-created_at')
+        return render(request, 'home/noticias.html', locals())
