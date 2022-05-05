@@ -135,7 +135,7 @@ class Regidurias(models.Model):
     apellido_materno_suplente = models.CharField(max_length=120, default="Some String", verbose_name='Apellido materno del suplente')
     partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
     foto = models.ImageField(upload_to='img', blank=True, verbose_name='Foto')
-    telefono = models.IntegerField(verbose_name='Teléfono')
+    telefono = models.CharField(max_length=15, blank=True, null=True,verbose_name='Teléfono')
     correo = models.CharField(max_length=120, verbose_name='Correo')
     facebook = models.CharField(max_length=320,blank=True, null=True, name="facebook", verbose_name="Facebook",default="Some String")
     twitter = models.CharField(max_length=320,blank=True, null=True, name="twitter", verbose_name="Twitter",default="Some String")
