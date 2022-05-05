@@ -54,8 +54,18 @@
       color: #D91C5C;
       font-size:16px;
       font-family: 'Montserrat';
-      text-align: right;
+      text-align: center;
    }
+.user-card {
+  width: 150px;
+  height: 150px;
+  border-color: #d9e022;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  position: relative;
+  margin-top: 5%;
+  float: left;
+}
 
 
 </style>
@@ -89,16 +99,13 @@
   
       {% for regidurias in filter.qs %}
       <div>
-<a href="{%url 'regidor' %}">
+<a href='{%url 'regidor' regidurias=regidurias.slug %}'>
         <div class="card">
           <div class="additional">
-            <div class="user-card">
-            <div>
-              <img class='' src='{{regidurias.foto.url}}' >
-            </div>
-            </div>
+              <img class='user-card' src='{{regidurias.foto.url}}'>
+           
             <div class="more-info" style="color: #D91C5C;">
-              <h1>{{regidurias.nombre}}</h1>
+              <h3 style="margin-top:5%;">{{regidurias.nombre}} {{regidurias.apellido_paterno}}</h3>
               <div class="more-info">
                 <span>{{ regidurias.partido }}</span>
               </div>
@@ -108,6 +115,7 @@
         </div>
       
       </div>
+        </div>
 
     </a>     
       {% empty %}

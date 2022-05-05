@@ -2,7 +2,7 @@ from django.db import models
 from apps.entidades.models import Entidades,Municipio
 from django.db.models.signals import pre_save, post_save
 from django.urls import reverse
-from .utils import slugify_instance_title
+from django.utils.text import slugify
 # Create your models here.
 
 class Comision_1_presidencia(models.Model):
@@ -121,7 +121,7 @@ STATUS_CHOICES = (('1',('Borrador')),
 
 
 class Regidurias(models.Model):
-    slug = models.CharField(unique=True,max_length=1000, null=True, blank=True, default="aquí no poner nada")
+    slug = models.CharField(unique=True,max_length=1000, null=True, blank=True, default="borrar este campo")
     entidades = models.ForeignKey(Entidades, on_delete=models.CASCADE)
     municipio = models.ForeignKey(Municipio, on_delete=models.CASCADE)
     ayuntamiento = models.CharField(max_length=12, verbose_name='Ayuntamiento')
@@ -161,29 +161,7 @@ class Regidurias(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_to = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
-    @property
-    def name(self):
-        return self.nombre
-
-    def get_absolute_url(self):
-        return reverse("regidurias:detail", kwargs={"slug": self.slug})
-
     def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.nombre+self.apellido_paterno)
         super().save(*args, **kwargs)
-
-
-
-def regidurias_pre_save(sender, instance, *args, **kwargs):
-# print('pre_save')
-    if instance.slug is None:
-        slugify_instance_title(instance, save=False)
-
-pre_save.connect(regidurias_pre_save, sender=Regidurias)
-
-
-def regidurias_post_save(sender, instance, created, *args, **kwargs):
-# print('post_save')
-    if created:
-        slugify_instance_title(instance, save=True)
-
-post_save.connect(regidurias_post_save, sender=Regidurias)

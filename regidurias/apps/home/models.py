@@ -14,7 +14,7 @@ class   Noticias(models.Model):
     imagen = models.ImageField (upload_to='noticias', blank=True, null=True)
     link = models.CharField(max_length=320,blank=True, null=True, name="link", verbose_name="noticias_link")
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default=1)
-    slug = models.CharField(unique=True,max_length=1000, null=True, blank=True, default="aquí no poner nada")
+    slug = models.CharField(unique=True,max_length=1000, null=True, blank=True, default="borrar este campo")
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_to = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
