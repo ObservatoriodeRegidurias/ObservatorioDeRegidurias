@@ -3,7 +3,7 @@ from apps.regidurias.models import Regidurias
 import locale
 from django.views import View
 from apps.regidurias.filters import RegiduriasFilter 
-
+from django.views import generic
 # Create your views here.
 class RegiduriasView(View):
     @property
@@ -16,11 +16,14 @@ class RegiduriasView(View):
         #return render(reverse("regidurias/template.html", kwargs={"regidurias": regidores.slug}))
         return render(request, 'regidurias/template.html', {'filter': regidores_filter})
 
-class RegidorView(View):
-    @property
-    def regidurias(self):
-        return self.kwargs["regidurias"]
+class regidor_detail(generic.ListView):
+    model = Regidurias
+    template_name = "regidurias/regidor.html"
+    # @property
+    # def regidurias(self):
+    #     return self.kwargs.get('regidurias')
         
-    def get(self, request, *args, **kwargs):
-        regidor =  Regidurias.objects.filter(slug=self.regidurias).first()
-        return render(reverse("regidurias/template.html", kwargs={"regidurias": regidor.slug}))
+    # def get(self, request, *args, **kwargs):
+    #     regidurias = Regidurias.objects.get(slug=self.regidurias)
+    #     #regidurias =  Regidurias.objects.filter(slug=self.regidurias).first()
+    #     return render(request, "regidurias/regidor.html", locals())

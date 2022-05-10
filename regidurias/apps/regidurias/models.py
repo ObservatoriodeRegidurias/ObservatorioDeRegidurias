@@ -163,5 +163,5 @@ class Regidurias(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.nombre+self.apellido_paterno)
-        super().save(*args, **kwargs)
+            self.slug = slugify(self.nombre + "-" + str(self.apellido_paterno))
+        return super().save(*args, **kwargs)
