@@ -99,7 +99,7 @@
   
       {% for regidurias in filter.qs %}
       <div>
-<a href='{%url 'regidurias' regidurias=regidurias.slug %}'>
+
         <div class="card">
           <div class="additional">
               <img class='user-card' src='{{regidurias.foto.url}}'>
@@ -109,15 +109,15 @@
               <div class="more-info">
                 <span>{{ regidurias.partido }}</span>
               </div>
-              <div class="more-info">
-                <span>{{ regidurias.twitter }}</span>
-              </div>
+              <br>
+              <br>
+              <a  style="color: #D91C5C;" href="{% url 'regidor:regidor' slug=regidurias.slug %}">Ver más</a>
         </div>
-      
+       
       </div>
         </div>
 
-    </a>     
+        
       {% empty %}
     
         

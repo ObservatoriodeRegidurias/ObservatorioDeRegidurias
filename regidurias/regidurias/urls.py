@@ -17,13 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from apps.regidurias.views import RegiduriasView
+from apps.regidurias.views import RegiduriasView,RegidorDetailView#, RegidorView
 from apps.cabildo.views import CabildoView
 from apps.contacto.views import ContactoView
 from apps.normatividad.views import NormatividadView
 from apps.preguntas.views import PreguntasView
 from apps.presupuesto.views import PresupuestoView
-#from . import views
+
 #from apps.home.views import NoticiasView
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -40,7 +40,8 @@ urlpatterns = [
     path('normatividad/',NormatividadView.as_view(), name='normatividad'),
     path('preguntas/',PreguntasView.as_view(), name='preguntas'),
     path('presupuesto/',PresupuestoView.as_view(), name='presupuesto'),
-    #path('regidor/<str:slug>/',views.regidor_detail.as_view(), name='regidor')
+    path('regidor/<str:slug>/',RegidorDetailView.as_view(), name='regidor')
+    #path('regidor/<str:slug>/',RegidorView.as_view(), name='regidor')
     #path('<slug:noticias>/',NoticiasView.as_view(), name='noticias')
 ]
 

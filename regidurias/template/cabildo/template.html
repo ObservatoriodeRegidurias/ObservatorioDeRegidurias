@@ -62,7 +62,7 @@
           {%else %}
           <td>Virtual</td>
           {% endif %}
-          <td>{{ cabildo.actas }}</td>
+          <td><a href="{{ cabildo.actas.url }}">Ver</a></td>
         </tr>
       {% empty %}
         <tr>
