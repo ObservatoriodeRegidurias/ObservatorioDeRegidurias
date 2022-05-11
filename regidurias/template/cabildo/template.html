@@ -25,8 +25,8 @@
           {% render_field filter.form.municipio class="form-control" %}
         </div>
         <div class="form-group col-sm-4 col-md-3">
-          {{ filter.form.fecha.label_tag }}
-          {% render_field filter.form.fecha class="form-control" %}
+          {{ filter.form.tipo_de_sesion.label_tag }}
+          {% render_field filter.form.tipo_de_sesion class="form-control" %}
         </div>
         <div class="form-group col-sm-4 col-md-3" style="margin-top:30px;">
           <button type="submit" class="btn " style="background-color: #D91C5C; color: #fff;">
@@ -40,18 +40,28 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Username</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Date joined</th>
+        <th>Ayuntamiento</th>
+        <th>Tipo de sesión</th>
+        <th>Modalidad</th>
+        <th>Acta</th>
       </tr>
     </thead>
     <tbody>
       {% for cabildo in filter.qs %}
         <tr>
-          <td>{{ cabildo.entidades }}</td>
           <td>{{ cabildo.ayuntamiento }}</td>
-          <td>{{ cabildo.modalidad }}</td>
+          {%if cabildo.tipo_de_sesion == '1' %}
+          <td> Solemne</td>
+          {%elif cabildo.tipo_de_sesion == '2' %}
+          <td> Ordinaria</td>
+          {%else %}
+          <td> Extraordinaria</td>
+          {% endif %}
+          {%if cabildo.modalidad == '1' %}
+          <td>Presencial</td>
+          {%else %}
+          <td>Virtual</td>
+          {% endif %}
           <td>{{ cabildo.actas }}</td>
         </tr>
       {% empty %}

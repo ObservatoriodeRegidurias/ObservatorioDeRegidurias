@@ -37,14 +37,23 @@
 </div>
   </form>
   <table class="table table-bordered">
-    <thead>
-    </thead>
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Nombre</th>
+          <th>Fecha de publicación</th>
+          <th>Ultima reforma</th>
+          <th>Fuentes</th>
+        </tr>
+      </thead>
     <tbody>
       {% for normatividad in filter.qs %}
         <tr>
-          <td>{{ normatividad.entidades }}</td>
-          <td>{{ normatividad.municipio }}</td>
           <td>{{ normatividad.tipo }}</td>
+          <td>{{ normatividad.nombre }}</td>
+          <td>{{ normatividad.fecha_de_publicacion }}</td>
+          <td>{{ normatividad.ultima_reforma }}</td>
+          <td>{{ normatividad.fuentes }}</td>
         </tr>
       {% empty %}
         <tr>
