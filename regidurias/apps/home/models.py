@@ -56,3 +56,21 @@ class Observatorio(models.Model):
     path_thumbnail = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_to = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+
+class AcercaDeNosotros(models.Model):
+    imagen = models.ImageField (upload_to='logos', blank=True, null=True)
+    imagen = models.ImageField (upload_to='logos', blank=True, null=True)
+    imagen1 = models.ImageField (upload_to='logos', blank=True, null=True)
+    imagen2 = models.ImageField (upload_to='logos', blank=True, null=True)
+    imagen3 = models.ImageField (upload_to='logos', blank=True, null=True)
+    imagen4 = models.ImageField (upload_to='logos', blank=True, null=True)
+    imagen5 = models.ImageField (upload_to='logos', blank=True, null=True)
+    imagen6 = models.ImageField (upload_to='logos', blank=True, null=True)
+    imagen7 = models.ImageField (upload_to='logos', blank=True, null=True)
+    imagen8 = models.ImageField (upload_to='logos', blank=True, null=True)
+    imagen9 = models.ImageField (upload_to='logos', blank=True, null=True)
+    titulo = models.CharField(max_length=200)
+    descripcion = models.TextField(verbose_name="Acerca de nosotros")
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    updated_to = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    

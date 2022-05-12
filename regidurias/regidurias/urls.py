@@ -23,6 +23,8 @@ from apps.contacto.views import ContactoView
 from apps.normatividad.views import NormatividadView
 from apps.preguntas.views import PreguntasView
 from apps.presupuesto.views import PresupuestoView
+from django.views.static import serve
+from django.conf.urls import url
 
 #from apps.home.views import NoticiasView
 urlpatterns = [
@@ -40,9 +42,8 @@ urlpatterns = [
     path('normatividad/',NormatividadView.as_view(), name='normatividad'),
     path('preguntas/',PreguntasView.as_view(), name='preguntas'),
     path('presupuesto/',PresupuestoView.as_view(), name='presupuesto'),
-    path('regidor/<str:slug>/',RegidorDetailView.as_view(), name='regidor')
-    #path('regidor/<str:slug>/',RegidorView.as_view(), name='regidor')
-    #path('<slug:noticias>/',NoticiasView.as_view(), name='noticias')
+    path('regidor/<str:slug>/',RegidorDetailView.as_view(), name='regidor'),
+    url(r'^download/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
 ]
 
 if settings.DEBUG:

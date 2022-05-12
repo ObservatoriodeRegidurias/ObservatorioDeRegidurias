@@ -1,6 +1,6 @@
 {%extends 'base.html'%}
 {% load widget_tweaks %}
-
+{% load static %}
 {%block title%} <p>'Sesiones Cabildo'</p> {%endblock%}
 
 {%block extrahead%}
@@ -62,7 +62,9 @@
           {%else %}
           <td>Virtual</td>
           {% endif %}
-          <td><a href="{{ cabildo.actas.url }}">Ver</a></td>
+          
+          <td><a href="{{  cabildo.actas }}" download><h5>{{  cabildo.actas }}</h5></td>
+          
         </tr>
       {% empty %}
         <tr>
