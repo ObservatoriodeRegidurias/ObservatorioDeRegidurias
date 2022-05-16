@@ -1,4 +1,5 @@
 {%extends 'base.html'%}
+{% load static %}
 {% load widget_tweaks %}
 {%block title%} <p>'Regidurias'</p> {%endblock%}
 
@@ -108,6 +109,25 @@
               <h3 style="margin-top:5%;">{{regidurias.nombre}} {{regidurias.apellido_paterno}}</h3>
               <div class="more-info">
                 <span>{{ regidurias.partido }}</span>
+                {%if regidurias.status == '2' %}
+                    <div id="container-social-networks" style="width:100%; z-index:1">
+                          {% if regidurias.facebook %} 
+                          <a href="{{regidurias.facebook}}" target="_blank">
+                            <img src="{% static "img/facebook.png" %}" style="width: 50px; height: 50px;">
+                          </a> 
+                              {% endif %}
+
+                          {% if regidurias.instagram%} 
+                          <a href="{{regidurias.instagram}}" target="_blank"> 
+                            <img src="{% static "img/instagram.png" %}" style="width: 50px; height: 50px;"> 
+                          </a> {% endif %}
+
+                          {% if regidurias.twitter%} 
+                          <a href="{{regidurias.twitter}}" target="_blank"> 
+                            <img src="{% static "img/gorjeo.png" %}" style="width: 50px; height: 50px;">
+                          </a> 
+                          {% endif %}
+                {%endif%}
               </div>
               <br>
               <br>

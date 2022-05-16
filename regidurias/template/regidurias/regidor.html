@@ -17,6 +17,7 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-column-gap: 1em;
+  margin:30px;
 }
 
 
@@ -134,16 +135,24 @@
 
   <div class="main_grid">
     <div class="left_side">
+      {%if regidor.foto%}
       <img class="foto" src='{{regidor.foto.url}}'>
+      {%else%}
+      <img class="foto" src="{% static "img/user-icon.png" %}" '>
+      {%endif%}
+      
      
-      <hr>
+      <hr style="border-color:#d91c5c;">
       <h2>{{regidor.partido}}</hh2>
       
-      <hr style="color:#d91c5c;">
-      <p>{{regidor.telefono}}</p>
-      <h2>Redes</h2>
-      <hr>
+      
       {%if regidor.status == '2' %}
+      <hr style="border-color:#d91c5c;">
+      <p>{{regidor.telefono}}</p>
+      <p>{{regidor.correo}}</p>
+      
+      <hr style="border-color:#d91c5c;">
+      <h2>Redes</h2>
       <div id="container-social-networks" style="width:100%; z-index:1">
         {% if regidor.facebook %} <a href="{{regidor.facebook}}" target="_blank">
           <img src="{% static "img/facebook.png" %}" style="width: 50px; height: 50px;">
@@ -155,6 +164,25 @@
         {% if regidor.twitter%} <a href="{{regidor.twitter}}" target="_blank"> 
           <img src="{% static "img/gorjeo.png" %}" style="width: 50px; height: 50px;">
         </a> {% endif %}
+        {%endif%}
+
+        {%if regidor.status == '3' %}
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         {%endif%}
       </div>
     </div>
@@ -262,6 +290,12 @@
           {% endif %}
          <br>
          <br>
+         {% if regidor.actas %} 
+         <a style="color: #D91C5C;" href="{{  regidor.actas.url }}" download><h5>Descargar Acta 1</h5></a>
+        {% endif %}
+        {% if regidor.actas_dos %} 
+         <a style="color: #D91C5C;" href="{{  regidor.actas_dos.url }}" download><h5>Descargar Acta 2</h5></a>
+        {% endif %}
         </div>
         
         </div>
