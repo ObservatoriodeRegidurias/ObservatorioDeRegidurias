@@ -11,7 +11,11 @@ class NoticiasAdmin(admin.ModelAdmin):
 class EventAdmin(admin.ModelAdmin):
     list_display = ('titulo',)
 
+class AcercaDeNosotrosAdmin(admin.ModelAdmin):
+    list_display = ('titulo',)
+
 
 admin.site.register(Noticias, NoticiasAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(Observatorio, ObservatorioAdmin)
+admin.site.register(AcercaDeNosotros, AcercaDeNosotrosAdmin)
