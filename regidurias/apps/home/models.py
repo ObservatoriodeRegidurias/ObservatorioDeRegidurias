@@ -58,7 +58,7 @@ class Observatorio(models.Model):
     updated_to = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
 class AcercaDeNosotros(models.Model):
-    imagen = models.ImageField (upload_to='logos', blank=True, null=True)
+    imagen0 = models.ImageField (upload_to='logos', blank=True, null=True)
     imagen = models.ImageField (upload_to='logos', blank=True, null=True)
     imagen1 = models.ImageField (upload_to='logos', blank=True, null=True)
     imagen2 = models.ImageField (upload_to='logos', blank=True, null=True)

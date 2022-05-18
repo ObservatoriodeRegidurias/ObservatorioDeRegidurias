@@ -130,6 +130,7 @@ h2 a {
     <thead>
       <tr>
         <th style="color: #fffefe;">Ayuntamiento</th>
+        <th style="color: #fffefe;">Fecha</th>
         <th style="color: #fffefe;">Tipo de sesión</th>
         <th style="color: #fffefe;">Modalidad</th>
         <th style="color: #fffefe;">Acta</th>
@@ -139,6 +140,7 @@ h2 a {
       {% for cabildo in filter.qs %}
         <tr>
           <td>{{ cabildo.ayuntamiento }}</td>
+          <td>{{ cabildo.fecha|date:"Y-m-d" }}</td>
           {%if cabildo.tipo_de_sesion == '1' %}
           <td> Solemne</td>
           {%elif cabildo.tipo_de_sesion == '2' %}

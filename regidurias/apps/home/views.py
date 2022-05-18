@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from apps.home.models import Event,Noticias,Observatorio
+from apps.home.models import Event,Noticias,Observatorio, AcercaDeNosotros
 import locale
 from django.views import View
 from django.http import Http404
@@ -22,3 +22,8 @@ class NoticiasView(View):
     def get(self, request, *args, **kwargs):
         noticia = Noticias.objects.all().order_by('-created_at')
         return render(request, 'home/noticias.html', locals())
+
+class AcercaDeNosotrosView(View):
+    def get(self, request, *args, **kwargs):
+        nosotros = AcercaDeNosotros.objects.all()
+        return render(request, 'home/quien.html', locals())

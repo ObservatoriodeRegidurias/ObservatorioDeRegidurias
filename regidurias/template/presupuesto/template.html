@@ -14,94 +14,93 @@
 <style>
   
   h2 {
-    font-size:1em; 
-    font-weight: 300;
-    text-align: center;
-    display: block;
-    line-height:1em;
-    padding-bottom: 2em;
-    color: #D91C5C;
+  font-size:1em; 
+  font-weight: 300;
+  text-align: center;
+  display: block;
+  line-height:1em;
+  padding-bottom: 2em;
+  color: #D91C5C;
+  font-family: 'Montserrat';
+}
+
+h2 a {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #D91C5C;
+  text-decoration: none;
+}
+
+
+
+.container td {
+	  font-weight: normal;
+	  font-size: 1em;
+  -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+	   -moz-box-shadow: 0 2px 2px -2px #0E1119;
+	        box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.container {
+	  text-align: left;
+	  overflow: hidden;
+	  width: 90%;
+	  margin: 0 auto;
+  display: table;
+}
+
+.container td, .container th {
+	  padding-bottom: 2%;
+	  padding-top: 2%;
+  padding-left:2%;  
+}
+
+/* Background-color of the odd rows */
+.container tr:nth-child(odd) {
+	  background-color: #f6f5f5;
     font-family: 'Montserrat';
-  }
+}
+
+/* Background-color of the even rows */
+.container tr:nth-child(even) {
+	  background-color: #e5e3e3;
+    font-family: 'Montserrat';
+}
+
+.container th {
+	  background-color: #D91C5C;
+    font-family: 'Montserrat';
+
+}
+
+.container td:first-child { color: #D91C5C; }
+
+.container tr:hover {
+   background-color: #ecebeb;
+-webkit-box-shadow: 0 6px 6px -6px #ecebeb;
+	   -moz-box-shadow: 0 6px 6px -6px #ecebeb;
+	        box-shadow: 0 6px 6px -6px #ecebeb;
+          font-family: 'Montserrat';
+}
+
+.container td:hover {
+  background-color: #d9e022;
+  color: #403E10;
+  font-weight: bold;
   
-  h2 a {
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #D91C5C;
-    text-decoration: none;
-  }
+  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+  transform: translate3d(6px, -6px, 0);
   
-  
-  
-  .container td {
-      font-weight: normal;
-      font-size: 1em;
-    -webkit-box-shadow: 0 2px 2px -2px #0E1119;
-       -moz-box-shadow: 0 2px 2px -2px #0E1119;
-            box-shadow: 0 2px 2px -2px #0E1119;
-  }
-  
-  .container {
-      text-align: left;
-      overflow: hidden;
-      width: 100%;
-      margin: 0 auto;
-    display: table;
-  }
-  
-  .container td, .container th {
-      padding-bottom: 2%;
-      padding-top: 2%;
-    padding-left:2%;  
-  }
-  
-  /* Background-color of the odd rows */
-  .container tr:nth-child(odd) {
-      background-color: #010101;
-      color: #fffefe;
-      font-family: 'Montserrat';
-  }
-  
-  /* Background-color of the even rows */
-  .container tr:nth-child(even) {
-      background-color: #050505;
-      font-family: 'Montserrat';
-  }
-  
-  .container th {
-      background-color: #D91C5C;
-      font-family: 'Montserrat';
-  
-  }
-  
-  .container td:first-child { color: #D91C5C; }
-  
-  .container tr:hover {
-     background-color: #000000;
-  -webkit-box-shadow: 0 6px 6px -6px #0E1119;
-       -moz-box-shadow: 0 6px 6px -6px #0E1119;
-            box-shadow: 0 6px 6px -6px #0E1119;
-            font-family: 'Montserrat';
-  }
-  
-  .container td:hover {
-    background-color: #d9e022;
-    color: #403E10;
-    font-weight: bold;
-    
-    box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
-    transform: translate3d(6px, -6px, 0);
-    
-    transition-delay: 0s;
-      transition-duration: 0.4s;
-      transition-property: all;
-    transition-timing-function: line;
-  }
-  
-  @media (max-width: 800px) {
-  .container td:nth-child(4),
-  .container th:nth-child(4) { display: none; }
-  }
+  transition-delay: 0s;
+	  transition-duration: 0.4s;
+	  transition-property: all;
+  transition-timing-function: line;
+}
+
+@media (max-width: 800px) {
+.container td:nth-child(4),
+.container th:nth-child(4) { display: none; }
+}
   </style>
 <form method="get">
       <div class="row" style="margin-top:3%;">
@@ -148,6 +147,11 @@
           <td>${{ presupuesto.servicos_personales  }}</td>
           <td>${{ presupuesto.comunicacion_social  }}</td>
           <td>${{ presupuesto.gasto_social  }}</td>
+          {%if presupuesto.fuentes%}
+          <td><a style="color: #D91C5C;" href="{{  cabildo.actas.url }}" download><h5>Descargar</h5></a></td>
+            {%else%}
+          <td><h5>No hay Fuentes</h5></td>
+          {%endif%}
         </tr>
       {% empty %}
         <tr>

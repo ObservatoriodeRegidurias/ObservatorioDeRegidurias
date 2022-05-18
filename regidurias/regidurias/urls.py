@@ -25,7 +25,7 @@ from apps.preguntas.views import PreguntasView
 from apps.presupuesto.views import PresupuestoView
 from django.views.static import serve
 from django.conf.urls import url
-
+from apps.home.views import AcercaDeNosotrosView
 #from apps.home.views import NoticiasView
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -44,6 +44,7 @@ urlpatterns = [
     path('presupuesto/',PresupuestoView.as_view(), name='presupuesto'),
     path('regidor/<str:slug>/',RegidorDetailView.as_view(), name='regidor'),
     url(r'^download/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
+    path('nosotros/',AcercaDeNosotrosView.as_view(), name='nosotros'),
 ]
 
 if settings.DEBUG:
