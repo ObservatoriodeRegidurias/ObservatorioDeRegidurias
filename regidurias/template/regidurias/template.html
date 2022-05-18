@@ -71,17 +71,17 @@
 
 </style>
 <form method="get">
-    <div class="well">
-      <div class="row">
-        <div class="form-group col-sm-4 col-md-3">
+    
+      <div class="row" style="margin-top:3%;">
+        <div class="form-group col-sm-4 col-md-2" style="margin-left:20%; font-family: 'Montserrat';">
           {{ filter.form.genero.label_tag }}
           {% render_field filter.form.genero class="form-control" %}
         </div>
-        <div class="form-group col-sm-4 col-md-3">
+        <div class="form-group col-sm-4 col-md-2" style="font-family: 'Montserrat';">
           {{ filter.form.partido.label_tag }}
           {% render_field filter.form.partido class="form-control" %}
         </div>
-        <div class="form-group col-sm-4 col-md-3">
+        <div class="form-group col-sm-4 col-md-2" style="font-family: 'Montserrat';">
           {{ filter.form.comision_1.label_tag }}
           {% render_field filter.form.comision_1 class="form-control" %}
         </div>
@@ -90,52 +90,52 @@
             <span class="glyphicon glyphicon-search"></span> Buscar
           </button>
           </div>
-        </div>
-      </div>
-    </div>
+      
   </form>
   <br>
+  {% for regidurias in filter.qs %}
 
-<div class="">
   
-      {% for regidurias in filter.qs %}
-      <div>
-
-        <div class="card">
+        <div class="card" style="margin-left:10%;">
           <div class="additional">
-              <img class='user-card' src='{{regidurias.foto.url}}'>
-           
             <div class="more-info" style="color: #D91C5C;">
-              <h3 style="margin-top:5%;">{{regidurias.nombre}} {{regidurias.apellido_paterno}}</h3>
+              <span>
+                {%if regidor.foto%}
+                <img class="foto" src='{{regidor.foto.url}}'>
+                {%else%}
+                <img class="foto" src="{% static "img/user-icon.png" %}" '>
+                {%endif%}
+              </span>
+              <h4>{{regidurias.nombre}} {{regidurias.apellido_paterno}}</h4>
               <div class="more-info">
                 <span>{{ regidurias.partido }}</span>
                 {%if regidurias.status == '2' %}
                     <div id="container-social-networks" style="width:100%; z-index:1">
                           {% if regidurias.facebook %} 
-                          <a href="{{regidurias.facebook}}" target="_blank">
-                            <img src="{% static "img/facebook.png" %}" style="width: 50px; height: 50px;">
+                          <a href="{{regidurias.facebook}}" target="_blank" style=" text-decoration:none;">
+                            <img src="{% static "img/facebook.png" %}" style="width: 40px; height: 40px; ">
                           </a> 
                               {% endif %}
 
                           {% if regidurias.instagram%} 
-                          <a href="{{regidurias.instagram}}" target="_blank"> 
-                            <img src="{% static "img/instagram.png" %}" style="width: 50px; height: 50px;"> 
+                          <a href="{{regidurias.instagram}}" target="_blank" style=" text-decoration:none;"> 
+                            <img src="{% static "img/instagram.png" %}" style="width: 40px; height: 40px;"> 
                           </a> {% endif %}
 
                           {% if regidurias.twitter%} 
-                          <a href="{{regidurias.twitter}}" target="_blank"> 
-                            <img src="{% static "img/gorjeo.png" %}" style="width: 50px; height: 50px;">
+                          <a href="{{regidurias.twitter}}" target="_blank" style=" text-decoration:none;"> 
+                            <img src="{% static "img/gorjeo.png" %}" style="width: 40px; height: 40px;">
                           </a> 
                           {% endif %}
                 {%endif%}
               </div>
-              <br>
-              <br>
-              <a  style="color: #D91C5C;" href="{% url 'regidor:regidor' slug=regidurias.slug %}">Ver más</a>
+        
         </div>
        
       </div>
+      <a  style="color: #D91C5C; text-decoration:none; width: 10px; height: 10px; text-align:right;" href="{% url 'regidor:regidor' slug=regidurias.slug %}">VER MÁS</a>
         </div>
+      </div>
 
         
       {% empty %}
@@ -143,5 +143,5 @@
         
         
       {% endfor %}
-    </div>
+    
 {%endblock%}

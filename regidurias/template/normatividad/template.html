@@ -14,8 +14,7 @@
 <style>
   
   h2 {
-  font-size:1em; 
-  font-weight: 300;
+  font-weight: 200;
   text-align: center;
   display: block;
   line-height:1em;
@@ -130,18 +129,18 @@ h2 a {
   <table class="container" style="margin-bottom:30px;">
       <thead>
         <tr>
-          <th>Tipo</th>
-          <th>Nombre</th>
-          <th>Fecha de publicación</th>
-          <th>Ultima reforma</th>
-          <th>Fuentes</th>
+          <th style="color: #fffefe;">Tipo</th>
+          <th style="color: #fffefe;">Nombre</th>
+          <th style="color: #fffefe;">Fecha de publicación</th>
+          <th style="color: #fffefe;">Ultima reforma</th>
+          <th style="color: #fffefe;">Fuentes</th>
         </tr>
       </thead>
     <tbody>
       {% for normatividad in filter.qs %}
         <tr>
           <td>{{ normatividad.tipo }}</td>
-          <td>{{ normatividad.nombre }}</td>
+          <td style="font-size: 12px; ">{{ normatividad.nombre }}</td>
           <td>{{ normatividad.fecha_de_publicacion|date:"Y-m-d"}}</td>
           <td>{{ normatividad.ultima_reforma|date:"Y-m-d" }}</td>
           {%if normatividad.actas%}
