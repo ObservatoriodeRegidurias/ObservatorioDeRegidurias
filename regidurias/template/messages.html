@@ -1,0 +1,51 @@
+{% if messages %}
+<div class="messages text-left" style="padding-left:5px;padding-right:5px;">
+    {% for message in messages %}
+        {%if message.tags == 'info'%}
+            <div class="alert alert-info  alert-dismissible fade show" role="alert">
+                <i class="fas fa-info-circle"></i>
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+        {%endif%}
+        {%if message.tags == 'success'%}
+            <div class="alert alert-success  alert-dismissible fade show" role="alert">
+                <i class="fas fa-check"></i>
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+        {%endif%}
+        {%if message.tags == 'warning'%}
+            <div class="alert alert-warning  alert-dismissible fade show" role="alert">
+                <i class="fas fa-exclamation-circle"></i>
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+        {%endif%}
+        {%if message.tags == 'error'%}
+            <div class="alert alert-danger  alert-dismissible fade show" role="alert">
+                <i class="fas fa-exclamation-triangle"></i>
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+        {%endif%}
+        {%if message.tags == 'debug'%}
+            <div class="alert alert-secondary  alert-dismissible fade show" role="alert">
+                <i class="fas fa-user-ninja"></i>
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+        {%endif%}
+    {% endfor %}
+</div>
+{% endif %}

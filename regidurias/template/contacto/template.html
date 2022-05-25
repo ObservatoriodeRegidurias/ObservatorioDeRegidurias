@@ -9,7 +9,11 @@
         <meta property="og:type"               content="website" />
         <meta property="og:title"              content="observatorio de regidurías" />
     {%endblock%}
-    
+    {%block extramenu%}
+
+    {%include 'messages.html'%}
+
+{%endblock%} 
     {%block content%}
     <style>
 
@@ -33,7 +37,7 @@ body, button, input {
 
 .screen {
   position: relative;
-  background: #3e3e3e;
+  background: #d5d5df;
   border-radius: 15px;
 }
 
@@ -54,7 +58,7 @@ body, button, input {
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  background: #4d4d4f;
+  background: #e7e7f1;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
@@ -132,9 +136,12 @@ body, button, input {
 .app-contact {
   margin-top: auto;
   font-size: 8px;
-  color: #888;
+  color: #ed157a;
 }
-
+.app-contact-email {
+  font-size: 8px;
+  color: #ed157a;
+}
 .app-form-group {
   margin-bottom: 15px;
 }
@@ -154,7 +161,7 @@ body, button, input {
   background: none;
   border: none;
   border-bottom: 1px solid #666;
-  color: #ddd;
+  color: #ed157a;
   font-size: 14px;
   text-transform: uppercase;
   outline: none;
@@ -166,7 +173,7 @@ body, button, input {
 }
 
 .app-form-control:focus {
-  border-bottom-color: #ddd;
+  border-bottom-color: #ed157a;
 }
 
 .app-form-button {
@@ -196,7 +203,7 @@ body, button, input {
 .credits-link {
   display: flex;
   align-items: center;
-  color: #fff;
+  color: #ed157a;
   font-weight: bold;
   text-decoration: none;
 }
@@ -243,6 +250,8 @@ body, button, input {
 </style>
     <div class="background">
         <div class="container">
+          <form method="POST" action="" class="contact-form">
+            {% csrf_token %}
           <div class="screen">
             <div class="screen-header">
               <div class="screen-header-left">
@@ -259,32 +268,34 @@ body, button, input {
             <div class="screen-body">
               <div class="screen-body-item left">
                 <div class="app-title">
-                  <span>CONTACT</span>
-                  <span>US</span>
+                  <span>CONTACTO</span>
+                  <span></span>
                 </div>
-                <div class="app-contact">CONTACT INFO : +62 81 314 928 595</div>
+                <div class="app-contact">CONTACTO INFO : +52 6651012770</div>
+                <div class="app-contact-email">observaregidurias@gmail.com</div>
               </div>
               <div class="screen-body-item">
                 <div class="app-form">
                   <div class="app-form-group">
-                    <input class="app-form-control" placeholder="NAME">
+                    <div>{{form.nombre}}</div>
                   </div>
                   <div class="app-form-group">
-                    <input class="app-form-control" placeholder="EMAIL">
+                    <div>{{form.email}}</div>
                   </div>
                   <div class="app-form-group">
-                    <input class="app-form-control" placeholder="CONTACT NO">
+                    <div>{{form.asunto}}</div>
                   </div>
                   <div class="app-form-group message">
-                    <input class="app-form-control" placeholder="MESSAGE">
+                    <div>{{form.mensaje}}</div>
                   </div>
                   <div class="app-form-group buttons">
-                    <button class="app-form-button">ENVIAR</button>
+                    <button type="submit" id="btnEnviar" class="app-form-button">ENVIAR</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </form>
         </div>
       </div>
     {%endblock%}
