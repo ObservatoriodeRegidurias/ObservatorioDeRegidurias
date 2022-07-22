@@ -3,5 +3,5 @@ from .views import PreguntasView
 
 urlpatterns = [
 
-    path('',PreguntasView.as_view(), name='preguntas')
+    path('<int:pk>',PreguntasView.as_view(), name='preguntas')
 ]

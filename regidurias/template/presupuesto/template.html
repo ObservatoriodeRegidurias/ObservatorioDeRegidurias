@@ -83,7 +83,7 @@ h2 a {
           font-family: 'Montserrat';
 }
 
-.container td:hover {
+/* .container td:hover {
   background-color: #d9e022;
   color: #403E10;
   font-weight: bold;
@@ -95,7 +95,7 @@ h2 a {
 	  transition-duration: 0.4s;
 	  transition-property: all;
   transition-timing-function: line;
-}
+} */
 
 @media (max-width: 800px) {
 .container td:nth-child(4),
@@ -135,20 +135,26 @@ h2 a {
         <th style="color: #fffefe;">Servicios personales</th>
         <th style="color: #fffefe;">Comunicación social</th>
         <th style="color: #fffefe;">Gasto social</th>
-        <th style="color: #fffefe;">Fuentes</th>
+        <th style="color: #fffefe;">Fuente 1</th>
+        <th style="color: #fffefe;">Fuente 2</th>
       </tr>
     </thead>
     <tbody>
       {% for presupuesto in filter.qs %}
         <tr>
           <td>{{ presupuesto.year }}</td>
-          <td>${{ presupuesto.presupuesto }}</td>
-          <td>${{ presupuesto.presupuesto_per_capital }}</td>
-          <td>${{ presupuesto.servicos_personales  }}</td>
-          <td>${{ presupuesto.comunicacion_social  }}</td>
-          <td>${{ presupuesto.gasto_social  }}</td>
+          <td>"${{ presupuesto.presupuesto }}"</td>
+          <td>"${{ presupuesto.presupuesto_per_capital }}"</td>
+          <td>"${{ presupuesto.servicos_personales  }}"</td>
+          <td>"${{ presupuesto.comunicacion_social  }}"</td>
+          <td>"${{ presupuesto.gasto_social  }}"</td>
           {%if presupuesto.fuentes%}
-          <td><a style="color: #D91C5C;" href="{{  cabildo.actas.url }}" download><h5>Descargar</h5></a></td>
+          <td><a style="color: #D91C5C;" href="{{  presupuesto.fuentes.url }}" target="_blank"><h5>Ver fuente</h5></a></td>
+            {%else%}
+          <td><h5>No hay Fuentes</h5></td>
+          {%endif%}
+          {%if presupuesto.fuentes_dos%}
+          <td><a style="color: #D91C5C;" href="{{  presupuesto.fuentes_dos.url }}" target="_blank"><h5>Ver fuente</h5></a></td>
             {%else%}
           <td><h5>No hay Fuentes</h5></td>
           {%endif%}
@@ -161,3 +167,10 @@ h2 a {
     </tbody>
   </table>
 {%endblock%}
+
+
+{% block scripts %}
+<script type="text/javascript">
+  $("a[target!='_system'][href$='.pdf']").attr("target", "_system");
+</script>
+{% endblock %}

@@ -18,7 +18,7 @@
 .card {
   width: 475px;
   height: 265px;
-  background-color: #000;
+  background-color: rgb(69, 69, 69);
   background: linear-gradient(#000, #000);
   box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
   border-radius: 6px;
@@ -56,8 +56,9 @@
       font-size:16px;
       font-family: 'Montserrat';
       text-align: center;
+      margin-top: 8%;
    }
-.user-card {
+.foto {
   width: 150px;
   height: 150px;
   border-color: #d9e022;
@@ -100,8 +101,8 @@
           <div class="additional">
             
               <span>
-                {%if regidor.foto%}
-                <img class="foto" src='{{regidor.foto.url}}'>
+                {%if regidurias.foto%}
+                <img class="foto" src='{{regidurias.foto.url}}'>
                 {%else%}
                 <img class="foto" src="{% static "img/user-icon.png" %}" '>
                 {%endif%}
@@ -109,7 +110,19 @@
               <div class="more-info" style="color: #D91C5C;">
               <h4>{{regidurias.nombre}} {{regidurias.apellido_paterno}}</h4>
               <div class="more-info">
-                <span>{{ regidurias.partido }}</span>
+                {%if regidurias.cargo == '1' %}
+                    <p style="color: #d91c5c;"> Presidente Municipal</p>
+                    {%elif regidor.cargo == '2' %}
+                    <p style="color: #d91c5c;"> Suplente Presidente</p>
+                    {%elif regidor.cargo == '3' %}
+                    <p style="color: #d91c5c;"> Síndico Procurador</p>
+                    {%elif regidor.cargo == '4' %}
+                    <p style="color: #d91c5c;"> Suplente Síndico</p>
+                    {%elif regidor.cargo == '5' %}
+                    <p style="color: #d91c5c;"> Regidor MR</p>
+                    {%elif regidor.cargo == '6' %}
+                    <p style="color: #d91c5c;"> Regidor RP</p>
+                {% endif %}
                 {%if regidurias.status == '2' %}
                     <div id="container-social-networks" style="width:100%; z-index:1">
                           {% if regidurias.facebook %} 

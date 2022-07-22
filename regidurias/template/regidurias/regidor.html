@@ -121,7 +121,6 @@
   margin-bottom: 0.1em;
   font-weight: 600;
   font-size: 0.8em;
-  font-weight: ;
 }
 
 .centro_ed {
@@ -148,8 +147,17 @@
       
       {%if regidor.status == '2' %}
       <hr style="border-color:#d91c5c;">
-      <p>{{regidor.telefono}}</p>
-      <p>{{regidor.correo}}</p>
+        {%if regidor.telefono == None %}
+          <p>No se encontro</p>
+        {%else%}
+          <p>{{regidor.telefono}}</p>
+        {%endif%}
+        {%if regidor.correo == None %}
+          <p>No se encontro</p>
+        {%else%}
+          <p>{{regidor.correo}}</p>
+        {%endif%}
+
       
       <hr style="border-color:#d91c5c;">
       <h2>Redes</h2>
@@ -243,58 +251,115 @@
         </div>
         <div class="trabajo">
           <div style="color: #d91c5c;"><h1>Comisiones:</h1></div>
-          {% if regidor.comision_1_presidencia != "Some String" %} 
+          {% if regidor.comision_1_presidencia|stringformat:"s" == "N/A"  %}
+          <h6>Comisión Presidencia 1:</h6>
+          {% else %}
           <h6>Comisión Presidencia 1: {{regidor.comision_1_presidencia}}</h6>
           {% endif %}
-          {% if regidor.comision_2_presidencia %} 
+
+
+          {% if regidor.comision_2_presidencia|stringformat:"s" == "N/A"  %}
+          <h6>Comisión Presidencia 2:</h6>
+          {% else %}
           <h6>Comisión Presidencia 2: {{regidor.comision_2_presidencia}}</h6>
           {% endif %}
-          {% if regidor.comision_1_secretaria %} 
-          <h6>Comisión Secretario 1: {{regidor.comision_1_secretaria}}</h6>
+
+
+          {% if regidor.comision_1_secretaria|stringformat:"s" == "N/A"  %}
+          <h6>Comisión Secretario 1:</h6>
+          {% else %}
+          <h6>Comisión Secretario 1: {{regidor.comision_1_secretaria }}</h6>
           {% endif %}
-          {% if regidor.comision_2_secretaria %} 
-          <h6>Comisión Secretario 2: {{regidor.comision_2_secretaria}}</h6>
+        
+
+          {% if regidor.comision_2_secretaria|stringformat:"s" == "N/A"  %}
+          <h6>Comisión Secretario 2:</h6>
+          {% else %}
+          <h6>Comisión Secretario 2: {{regidor.comision_2_secretaria }}</h6>
           {% endif %}
-          {% if regidor.comision_3_secretaria %} 
-          <h6>Comisión Secretario 3: {{regidor.comision_3_secretaria}}</h6>
+
+          
+          {% if regidor.comision_3_secretaria|stringformat:"s" == "N/A"  %}
+          <h6>Comisión Secretario 3:</h6>
+          {% else %}
+          <h6>Comisión Secretario 3: {{regidor.comision_3_secretaria }}</h6>
           {% endif %}
-          {% if regidor.comision_4_secretaria %} 
-          <h6>Comisión Secretario 4: {{regidor.comision_4_secretaria}}</h6>
+
+
+          {% if regidor.comision_4_secretaria|stringformat:"s" == "N/A"  %}
+          <h6>Comisión Secretario 4:</h6>
+          {% else %}
+          <h6>Comisión Secretario 4: {{regidor.comision_4_secretaria }}</h6>
           {% endif %}
-          {% if regidor.comision_1 %} 
-          <h6>Comisión 1: {{regidor.comision_1}}</h6>
+
+
+          {% if regidor.comision_1|stringformat:"s" == "N/A"  %}
+          <h6>Comisión 1:</h6>
+          {% else %}
+          <h6>Comisión 1: {{regidor.comision_1 }}</h6>
           {% endif %}
-          {% if regidor.comision_2 %} 
+
+          {% if regidor.comision_2|stringformat:"s" == "N/A"  %}
+          <h6>Comisión 2:</h6>
+          {% else %}
           <h6>Comisión 2: {{regidor.comision_2}}</h6>
           {% endif %}
-          {% if regidor.comision_3 %} 
-          <h6>Comisión 3: {{regidor.comision_3}}</h6>
+
+
+          {% if regidor.comision_3|stringformat:"s" == "N/A"  %}
+          <h6>Comisión 3:</h6>
+          {% else %}
+          <h6>Comisión 3: {{regidor.comision_3 }}</h6>
           {% endif %}
-          {% if regidor.comision_4 %} 
-          <h6>Comisión 4: {{regidor.comision_4}}</h6>
+
+
+          {% if regidor.comision_4|stringformat:"s" == "N/A"  %}
+          <h6>Comisión 4:</h6>
+          {% else %}
+          <h6>Comisión 4: {{regidor.comision_4 }}</h6>
           {% endif %}
-          {% if regidor.comision_5 %} 
-          <h6>Comisión 5: {{regidor.comision_5}}</h6>
+
+          {% if regidor.comision_5|stringformat:"s" == "N/A"  %}
+          <h6>Comisión 5:</h6>
+          {% else %}
+          <h6>Comisión 5: {{regidor.comision_5 }}</h6>
           {% endif %}
-          {% if regidor.comision_6 %} 
+
+
+          {% if regidor.comision_6|stringformat:"s" == "N/A"  %}
+          <h6>Comisión 6:</h6>
+          {% else %}
           <h6>Comisión 6: {{regidor.comision_6}}</h6>
           {% endif %}
-          {% if regidor.comision_7 %} 
+
+
+          {% if regidor.comision_7|stringformat:"s" == "N/A"  %}
+          <h6>Comisión 7:</h6>
+          {% else %}
           <h6>Comisión 7: {{regidor.comision_7}}</h6>
           {% endif %}
-          {% if regidor.comision_8 %} 
-          <h6>Comisión 8: {{regidor.comision_8}}</h6>
+
+          {% if regidor.comision_8|stringformat:"s" == "N/A"  %}
+          <h6>Comisión 8:</h6>
+          {% else %}
+          <h6>Comisión 8: {{regidor.comision_8 }}</h6>
           {% endif %}
-          {% if regidor.comision_9 %} 
-          <h6>Comisión 9: {{regidor.comision_9}}</h6>
+
+
+          {% if regidor.comision_9|stringformat:"s" == "N/A"  %}
+          <h6>Comisión 9:</h6>
+          {% else %}
+          <h6>Comisión 9: {{regidor.comision_9 }}</h6>
           {% endif %}
+
+          
          <br>
          <br>
          {% if regidor.actas %} 
-         <a style="color: #D91C5C;" href="{{  regidor.actas.url }}" download><h5>Descargar Acta 1</h5></a>
+         <a style="color: #D91C5C;" href="{{  regidor.actas.url }}" target="_blank"><h5>Ver Acta 1</h5></a>
         {% endif %}
         {% if regidor.actas_dos %} 
-         <a style="color: #D91C5C;" href="{{  regidor.actas_dos.url }}" download><h5>Descargar Acta 2</h5></a>
+         <a style="color: #D91C5C;" href="{{  regidor.actas_dos.url }}" target="_blank"><h5>Ver Acta 2</h5></a>
         {% endif %}
         </div>
         
@@ -307,3 +372,9 @@
   </div>
 
 {%endblock%}
+
+{% block scripts %}
+<script type="text/javascript">
+  $("a[target!='_system'][href$='.pdf']").attr("target", "_system");
+</script>
+{% endblock %}

@@ -83,7 +83,7 @@ h2 a {
           font-family: 'Montserrat';
 }
 
-.container td:hover {
+/* .container td:hover {
   background-color: #d9e022;
   color: #403E10;
   font-weight: bold;
@@ -95,7 +95,7 @@ h2 a {
 	  transition-duration: 0.4s;
 	  transition-property: all;
   transition-timing-function: line;
-}
+} */
 
 @media (max-width: 800px) {
 .container td:nth-child(4),
@@ -154,7 +154,7 @@ h2 a {
           <td>Virtual</td>
           {% endif %}
           {%if cabildo.actas%}
-          <td><a style="color: #D91C5C;" href="{{  cabildo.actas.url }}" download><h5>Descargar</h5></a></td>
+          <td><a style="color: #D91C5C;" href="{{  cabildo.actas.url }}" target="_blank"><h5>Ver Acta</h5></a></td>
             {%else%}
           <td><h5>No hay Actas</h5></td>
           {%endif%}
@@ -174,3 +174,8 @@ h2 a {
 
                 
 {%endblock%}
+{% block scripts %}
+<script type="text/javascript">
+  $("a[target!='_system'][href$='.pdf']").attr("target", "_system");
+</script>
+{% endblock %}

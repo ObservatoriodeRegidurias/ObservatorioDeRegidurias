@@ -82,7 +82,7 @@ h2 a {
           font-family: 'Montserrat';
 }
 
-.container td:hover {
+/* .container td:hover {
   background-color: #d9e022;
   color: #403E10;
   font-weight: bold;
@@ -94,7 +94,7 @@ h2 a {
 	  transition-duration: 0.4s;
 	  transition-property: all;
   transition-timing-function: line;
-}
+} */
 
 @media (max-width: 800px) {
 .container td:nth-child(4),
@@ -143,10 +143,10 @@ h2 a {
           <td style="font-size: 12px; ">{{ normatividad.nombre }}</td>
           <td>{{ normatividad.fecha_de_publicacion|date:"Y-m-d"}}</td>
           <td>{{ normatividad.ultima_reforma|date:"Y-m-d" }}</td>
-          {%if normatividad.actas%}
-          <td><a style="color: #D91C5C;" href="{{  cabildo.actas.url }}" download><h5>Descargar</h5></a></td>
+          {%if normatividad.fuentes%}
+          <td><a style="color: #D91C5C;" href="{{  normatividad.fuentes.url }}" target="_blank"><h5>Ver  fuente</h5></a></td>
             {%else%}
-          <td><h5>No hay Actas</h5></td>
+          <td><h5>No hay fuente</h5></td>
           {%endif%}
         </tr>
       {% empty %}
@@ -157,3 +157,10 @@ h2 a {
     </tbody>
   </table>
 {%endblock%}
+
+
+{% block scripts %}
+<script type="text/javascript">
+  $("a[target!='_system'][href$='.pdf']").attr("target", "_system");
+</script>
+{% endblock %}
