@@ -1,10 +1,16 @@
 from django.contrib import admin
-from apps.preguntas.models import *
+from .models import Post, Tag
 
-# Register your models here.
-class ComentariosAdmin(admin.ModelAdmin):
-    list_display = ('nombre','email',)
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('title', 'created_on', 'updated_on')
 
-admin.site.register(Comentarios,ComentariosAdmin)
+    search_fields = ('title',)
+    # this create the slug field from the title field
+    prepopulated_fields = {'slug': ('title',)}
+
+
+
+admin.site.register(Post, PostAdmin)
+
 
 # Register your models here.

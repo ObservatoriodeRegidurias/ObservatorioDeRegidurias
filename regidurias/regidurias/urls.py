@@ -21,11 +21,12 @@ from apps.regidurias.views import RegiduriasView,RegidorDetailView#, RegidorView
 from apps.cabildo.views import CabildoView
 from apps.contacto.views import ContactoView
 from apps.normatividad.views import NormatividadView
-from apps.preguntas.views import PreguntasView
+from apps.preguntas.views import ComentariosView, PostView, PostCreateView
 from apps.presupuesto.views import PresupuestoView
 from django.views.static import serve
-from django.conf.urls import url
+from django.conf.urls import url,include
 from apps.home.views import AcercaDeNosotrosView
+
 #from apps.home.views import NoticiasView
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,14 +34,15 @@ urlpatterns = [
     path('contacto/',include(('apps.contacto.urls','contacto'))),
     path('',include(('apps.home.urls','home'))),
     path('normatividad/',include(('apps.normatividad.urls','normatividad'))),
-    path('preguntas/',include(('apps.preguntas.urls','preguntas'))),
+    path('preguntas/',include(('apps.preguntas.urls','preguntas'),namespace='preguntas')),
     path('presupuesto/',include(('apps.presupuesto.urls','presupuesto'))),
     path('regidurias/',include(('apps.regidurias.urls','regidurias'))),
     path('regidurias/',RegiduriasView.as_view(), name='regidurias'),
     path('sesion_cabildo/',CabildoView.as_view(), name='sesion_cabildo'),
     path('contacto/',ContactoView.as_view(), name='contacto'),
     path('normatividad/',NormatividadView.as_view(), name='normatividad'),
-    path('preguntas/',PreguntasView.as_view(), name='preguntas'),
+    # path('preguntas/',ComentariosView.as_view(), name='preguntas'),
+
     path('presupuesto/',PresupuestoView.as_view(), name='presupuesto'),
     path('regidor/<str:slug>/',RegidorDetailView.as_view(), name='regidor'),
     url(r'^download/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
