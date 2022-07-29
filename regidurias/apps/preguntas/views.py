@@ -68,7 +68,7 @@ class PostView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ["title", "content", "image", "tags"]
+    fields = ["author","title", "content", "image", "tags"]
 
     def get_success_url(self):
         messages.success(
